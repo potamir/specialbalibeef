@@ -23,7 +23,7 @@ export default function MyApp({ Component, pageProps }) {
         Supported By
         <div className="footer-img">
           <img className="footer-logo" src={require("../assets/1.png")} />
-          <img className="footer-logo" src={require("../assets/2.PNG")} />
+          <img className="footer-logo" src={require("../assets/2.png")} />
           <img className="footer-logo" src={require("../assets/3.png")} />
           <img className="footer-logo" src={require("../assets/4.png")} />
           <img className="footer-logo" src={require("../assets/5.png")} />
