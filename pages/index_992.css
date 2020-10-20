@@ -1,0 +1,34 @@
+@media (max-width: 992px) {
+  .header-logo {
+    font-size: 2.6rem;
+  }
+  .header-nav {
+    margin-right: 0.8rem;
+    font-size: 0.8rem;
+  }
+  .dummy-obj {
+    height: 450px;
+  }
+  .about-content{
+    width: 90%;
+  }
+  .about-img{
+    width: 80%;
+  }
+  .contact-main-div {
+    flex-direction: column;
+  }
+  .contact-form-div {
+    align-items: center;
+  }
+  .contact-form-wrapper {
+    width: 100%;
+    padding: 0 5rem 0 5rem;
+  }
+  .contact-form-label {
+    width: 100%;
+  }
+  .contact-form-input {
+    width: 100%;
+  }
+}
