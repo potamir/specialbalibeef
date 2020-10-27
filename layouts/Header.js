@@ -62,7 +62,7 @@ class Header extends Component {
             className={`header-nav ${activeNav == "/" ? "active-nav" : ""}`}
             onClick={() => this.setNav("/")}
           >
-            Home
+            HOME
           </a>
         </Link>
         <Link href="/About_Us">
@@ -72,7 +72,7 @@ class Header extends Component {
             }`}
             onClick={() => this.setNav("/About_Us")}
           >
-            About Us
+            ABOUT US
           </a>
         </Link>
         <Link href="/Products">
@@ -82,7 +82,7 @@ class Header extends Component {
             }`}
             onClick={() => this.setNav("/Products")}
           >
-            Products
+            PRODUCTS
           </a>
         </Link>
         <Link href="/Research_And_Development">
@@ -92,7 +92,7 @@ class Header extends Component {
             }`}
             onClick={() => this.setNav("/Research_And_Development")}
           >
-            Research & Development
+            RESEARCH & DEVELOPMENT
           </a>
         </Link>
         <Link href="/Admin">
@@ -102,7 +102,7 @@ class Header extends Component {
             }`}
             onClick={() => this.setNav("/Admin")}
           >
-            Admin
+            ADMIN
           </a>
         </Link>
       </div>
@@ -136,7 +136,7 @@ class Header extends Component {
               this.closeModal();
             }}
           >
-            About Us
+            ABOUT US
           </a>
         </Link>
         <Link href="/Products">
@@ -149,7 +149,7 @@ class Header extends Component {
               this.closeModal();
             }}
           >
-            Products
+            PRODUCTS
           </a>
         </Link>
         <Link href="/Research_And_Development">
@@ -164,22 +164,20 @@ class Header extends Component {
               this.closeModal();
             }}
           >
-            Research & Development
+            RESEARCH & DEVELOPMENT
           </a>
         </Link>
         <Link href="/Admin">
           <a
             className={`mobile-nav ${
-              activeNav == "/Admin"
-                ? "active-mobile-nav"
-                : ""
+              activeNav == "/Admin" ? "active-mobile-nav" : ""
             }`}
             onClick={() => {
               this.setNav("/Admin");
               this.closeModal();
             }}
           >
-            Admin
+            ADMIN
           </a>
         </Link>
       </React.Fragment>
@@ -197,7 +195,9 @@ class Header extends Component {
               </span>
               <h2>Menu</h2>
             </div>
-            <div className="modal-body">{this.navBarMobile()}</div>
+            <div className="modal-body">
+              <div className="modal-text">{this.navBarMobile()}</div>
+            </div>
             <div className="modal-footer">
               <a className="header-logo sub-header-logo">Special Bali Beef</a>
             </div>
