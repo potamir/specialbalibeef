@@ -9,6 +9,7 @@ import "../helpers/dropdown.css";
 import "../helpers/modal.css";
 import "../helpers/draft.css";
 import "../helpers/placeholders.css";
+import "../helpers/button.css";
 
 export default function MyApp({ Component, pageProps }) {
   return (
