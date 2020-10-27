@@ -4,7 +4,6 @@
 } */
 
 body {
-  margin: 0px 0px 0px 0px;
 }
 
 .header-wrapper {
@@ -294,77 +293,4 @@ body {
 }
 .button-submit:hover {
   background-color: #aaa;
-}
-
-/*Homepage*/
-
-.homepage-welcome-div {
-  height: 400px;
-  background-color: #666;
-  color: #ddd;
-  padding: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition-duration: 0.4s;
-  cursor: default;
-  font-size: 2rem;
-}
-.homepage-welcome-div:hover {
-  background-color: #eba95e;
-  color: #222;
-}
-
-.highlight-main-div {
-  height: 800px;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  background-color: #eee;
-}
-
-.highlight-inner-div {
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
-.highlight-content {
-  flex: 1;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background-color: #666;
-}
-.highlight-content:nth-last-child(odd) {
-  background-color: #ddd;
-  margin-left: 1rem;
-}
-.highlight-content:nth-last-child(even) {
-  margin-right: 1rem;
-  color: #ddd;
-}
-.highlight-content-title {
-  flex: 1;
-  font-size: 2rem;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-}
-.highlight-content-details {
-  flex: 1;
-  font-size: 1.1rem;
-  padding: 0rem 1rem 1rem 1rem;
-  text-align: justify;
-}
-.highlight-content-img {
-  flex: 6;
-  background-color: #222;
-  width: 90%;
 }
