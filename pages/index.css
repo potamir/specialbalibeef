@@ -7,7 +7,7 @@ body {
 }
 
 .header-wrapper {
-  background-color: #f9f9f9;
+  background-color:	#c7955a;
   display: flex;
   flex-direction: row;
   height: 8rem;
@@ -24,6 +24,7 @@ body {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  margin-bottom: 1.2em;
 }
 .header-logo {
   font-size: 3rem;
@@ -39,13 +40,20 @@ body {
 .header-nav-wrapper {
   flex: 1;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  margin-bottom: 3.2em;
 }
 .header-nav {
   margin-right: 1rem;
   color: #222;
   font-size: 1rem;
   font-weight: 500;
+  margin-right: 1.3em;
+  color: white
+}
+
+.header-nav:link {
+  text-decoration: none;
 }
 
 .header-nav:hover,
@@ -53,7 +61,6 @@ body {
   color: #222;
   opacity: 0.9;
   cursor: pointer;
-  text-decoration: none;
 }
 .active-nav {
   color: rgb(5, 68, 119);
@@ -116,13 +123,22 @@ body {
   justify-content: center;
   width: 100%;
 }
+
+.mobile-nav:link {
+  text-decoration: none;
+}
+
 .mobile-nav {
+  margin-top: 2em;
   color: #ddd;
   min-height: 3rem;
-  width: 100%;
+  width: 25rem;
   display: flex;
   align-items: center;
-  padding-left: 1rem;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  background-color:rgb(87, 85, 85, 0.2);
 }
 .mobile-nav:hover,
 .mobile-nav-child:hover {
@@ -148,6 +164,23 @@ body {
   padding: 0rem 2rem 0rem 2rem;
   cursor: pointer;
 }
+
+.modal-body {
+  background-color:rgb(87, 85, 85, 0.2);
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.modal-text {
+  color: white;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.modal-header {
+}
+
 .home-sponsored-div {
   width: 100%;
   padding: 0rem 5rem 0rem 5rem;
