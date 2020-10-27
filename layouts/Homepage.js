@@ -29,6 +29,10 @@ class About_Us extends Component {
             </div>
           </div>
         </div>
+        <div className="homepage-more-div">
+          <h1 className="homepage-more-font">Let's Know More About Us!</h1>
+          <button className="button learn-more-bottom">Learn More ></button>
+        </div>
       </div>
     );
   }

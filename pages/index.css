@@ -8,7 +8,7 @@ body {
 }
 
 .header-wrapper {
-  background-color:	#c7955a;
+  background-color: #222;
   display: flex;
   flex-direction: row;
   height: 8rem;
@@ -34,6 +34,7 @@ body {
   cursor: pointer;
   width: fit-content;
   font-family: Arial, Helvetica, sans-serif;
+  color: #eba95e;
 }
 .header-logo:hover {
   opacity: 0.9;
@@ -50,7 +51,7 @@ body {
   font-size: 1rem;
   font-weight: 500;
   margin-right: 1.3em;
-  color: white
+  color: white;
 }
 
 .header-nav:link {
@@ -59,12 +60,12 @@ body {
 
 .header-nav:hover,
 .header-active::after {
-  color: #222;
+  color: #eba95e;
   opacity: 0.9;
   cursor: pointer;
 }
 .active-nav {
-  color: rgb(5, 68, 119);
+  color: #eba95e;
 }
 
 .home-wrapper {
@@ -139,7 +140,7 @@ body {
   justify-content: center;
   display: flex;
   flex-direction: row;
-  background-color:rgb(87, 85, 85, 0.2);
+  background-color: rgb(87, 85, 85, 0.2);
 }
 .mobile-nav:hover,
 .mobile-nav-child:hover {
@@ -167,7 +168,7 @@ body {
 }
 
 .modal-body {
-  background-color:rgb(87, 85, 85, 0.2);
+  background-color: rgb(87, 85, 85, 0.2);
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -300,8 +301,8 @@ body {
 
 .homepage-welcome-div {
   height: 400px;
-  background-color: #666;
-  color: #ddd;
+  background-color: #eba95e;
+  color: #fff;
   padding: 2rem;
   display: flex;
   align-items: center;
@@ -311,18 +312,18 @@ body {
   font-size: 2rem;
 }
 .homepage-welcome-div:hover {
-  background-color: #eba95e;
+  background-color: #ddd;
   color: #222;
 }
 
 .highlight-main-div {
   height: 800px;
   padding: 1rem;
+  margin: 0rem 0rem 2rem 0rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background-color: #eee;
 }
 
 .highlight-inner-div {
@@ -343,7 +344,7 @@ body {
   background-color: #666;
 }
 .highlight-content:nth-last-child(odd) {
-  background-color: #ddd;
+  background-color: #eba95e;
   margin-left: 1rem;
 }
 .highlight-content:nth-last-child(even) {
@@ -365,6 +366,23 @@ body {
 }
 .highlight-content-img {
   flex: 6;
-  background-color: #222;
+  background-color: #ddd;
   width: 90%;
+}
+
+.homepage-more-div {
+  height: 400px;
+  background-color: #222;
+  color: #fff;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-duration: 0.4s;
+  cursor: default;
+  font-size: 2rem;
+}
+.homepage-more-div:hover {
+  background-color: #eba95e;
+  color: #222;
 }

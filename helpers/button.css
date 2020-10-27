@@ -12,24 +12,35 @@
 }
 
 .learn-more-left {
-  background-color: #eee;
-  width: 90%;
-  color: black;
-  border: 2px solid #555;
-}
-
-.learn-more-left:hover {
-  background-color: #555;
-  color: white;
-}
-.learn-more-right {
   background-color: #555;
   width: 90%;
-  color: black;
+  color: #eee;
   border: 2px solid #eee;
 }
 
-.learn-more-right:hover {
+.learn-more-left:hover {
   background-color: #eee;
   color: #555;
+}
+.learn-more-right {
+  background-color: #eba95e;
+  width: 90%;
+  color: black;
+  border: 2px solid #000;
+}
+
+.learn-more-right:hover {
+  background-color: #222;
+  color: #eee;
+}
+
+.learn-more-bottom {
+  background-color: rgba(0, 0, 0, 0);
+  color: #eee;
+  border: 2px solid #ddd;
+}
+.learn-more-bottom:hover {
+  background-color: rgba(0, 0, 0, 0);
+  color: #222;
+  border: 2px solid #ddd;
 }
