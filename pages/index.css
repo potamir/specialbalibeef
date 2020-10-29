@@ -17,7 +17,7 @@ body {
   padding: 0rem 2rem 0rem 2rem;
   border-style: solid;
   border-width: 0px 0px 2px 0px;
-  border-color: #aaa;
+  border-color: #ddd;
 }
 .header-logo-wrapper {
   height: 100%;
@@ -46,7 +46,10 @@ body {
   margin-bottom: 3.2em;
 }
 .header-nav {
+  flex: 1;
   margin-right: 1rem;
+  display: flex;
+  justify-content: center;
   color: #222;
   font-size: 1rem;
   font-weight: 500;
@@ -161,12 +164,16 @@ body {
   min-height: 90vh;
 }
 .footer-logo {
-  height: 2rem;
+  height: 3rem;
   width: auto;
   padding: 0rem 2rem 0rem 2rem;
   cursor: pointer;
 }
-
+.footer-support {
+  font-weight: bold;
+  font-size: 0.8rem;
+  padding: 2rem 2rem 2rem 3rem;
+}
 .modal-body {
   background-color: rgb(87, 85, 85, 0.2);
   align-items: center;
@@ -300,6 +307,9 @@ body {
 /*Homepage*/
 
 .homepage-welcome-div {
+  background-image: url("../assets/c3.png");
+  background-size: cover;
+  background-position: center;
   height: 400px;
   background-color: #eba95e;
   color: #fff;
@@ -312,8 +322,9 @@ body {
   font-size: 2rem;
 }
 .homepage-welcome-div:hover {
+  background-image: url("../assets/c1.png");
   background-color: #ddd;
-  color: #222;
+  color: rgba(0, 0, 0, 0);
 }
 
 .highlight-main-div {
@@ -371,6 +382,9 @@ body {
 }
 
 .homepage-more-div {
+  background-image: url("../assets/c2bef.png");
+  background-size: cover;
+  background-position: center;
   height: 400px;
   background-color: #222;
   color: #fff;
@@ -383,6 +397,7 @@ body {
   font-size: 2rem;
 }
 .homepage-more-div:hover {
+  background-image: url("../assets/c2.png");
   background-color: #eba95e;
-  color: #222;
+  color: #eba95e;
 }

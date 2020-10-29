@@ -95,14 +95,14 @@ class Header extends Component {
             RESEARCH & DEVELOPMENT
           </a>
         </Link>
-        <Link href="/Admin">
+        <Link href="/History">
           <a
             className={`header-nav ${
-              activeNav == "/Admin" ? "active-nav" : ""
+              activeNav == "/History" ? "active-nav" : ""
             }`}
-            onClick={() => this.setNav("/Admin")}
+            onClick={() => this.setNav("/History")}
           >
-            ADMIN
+            HISTORY
           </a>
         </Link>
       </div>
@@ -167,17 +167,17 @@ class Header extends Component {
             RESEARCH & DEVELOPMENT
           </a>
         </Link>
-        <Link href="/Admin">
+        <Link href="/History">
           <a
             className={`mobile-nav ${
-              activeNav == "/Admin" ? "active-mobile-nav" : ""
+              activeNav == "/History" ? "active-mobile-nav" : ""
             }`}
             onClick={() => {
-              this.setNav("/Admin");
+              this.setNav("/History");
               this.closeModal();
             }}
           >
-            ADMIN
+            HISTORY
           </a>
         </Link>
       </React.Fragment>

@@ -21,7 +21,7 @@ export default function MyApp({ Component, pageProps }) {
       <Header />
       <Component {...pageProps} />
       <footer className="footer">
-        Supported By
+        <div className="footer-support">Supported By</div>
         <div className="footer-img">
           <img className="footer-logo" src={require("../assets/1.png")} />
           <img className="footer-logo" src={require("../assets/2.png")} />
