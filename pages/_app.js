@@ -23,13 +23,13 @@ export default function MyApp({ Component, pageProps }) {
       <footer className="footer">
         <div className="footer-support">Supported By</div>
         <div className="footer-img">
-          <img className="footer-logo" src={require("../assets/1.png")} />
-          <img className="footer-logo" src={require("../assets/2.png")} />
-          <img className="footer-logo" src={require("../assets/3.png")} />
-          <img className="footer-logo" src={require("../assets/4.png")} />
-          <img className="footer-logo" src={require("../assets/5.png")} />
-          <img className="footer-logo" src={require("../assets/6.png")} />
-          <img className="footer-logo" src={require("../assets/7.png")} />
+          <a href="https://aciar.gov.au/"><img className="footer-logo" src={require("../assets/1.png")} /></a>
+          <a href="https://www.mfat.govt.nz/en/"><img className="footer-logo" src={require("../assets/2.png")} /></a>
+          <a href="https://www.pertanian.go.id/"><img className="footer-logo" src={require("../assets/3.png")} /></a>
+          <a href="https://www.massey.ac.nz/"><img className="footer-logo" src={require("../assets/4.png")} /></a>
+          <a href="https://unram.ac.id/"><img className="footer-logo" src={require("../assets/5.png")} /></a>
+          <a href="https://www.une.edu.au/"><img className="footer-logo" src={require("../assets/6.png")} /></a>
+          <a href="https://www.uq.edu.au/"> <img className="footer-logo" src={require("../assets/7.png")} /></a>
         </div>
       </footer>
     </React.Fragment>

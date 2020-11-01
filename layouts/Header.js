@@ -105,6 +105,26 @@ class Header extends Component {
             HISTORY
           </a>
         </Link>
+        <Link href="/Training_And_Mentoring">
+          <a
+            className={`header-nav ${
+              activeNav == "/Training_And_Mentoring" ? "active-nav" : ""
+            }`}
+            onClick={() => this.setNav("/Training_And_Mentoring")}
+          >
+            TRAINING & MENTORING
+          </a>
+        </Link>
+        <Link href="/Information_System">
+          <a
+            className={`header-nav ${
+              activeNav == "/Information_System" ? "active-nav" : ""
+            }`}
+            onClick={() => this.setNav("/Information_System")}
+          >
+            INFORMATION SYSTEM
+          </a>
+        </Link>
       </div>
     );
   }
@@ -178,6 +198,31 @@ class Header extends Component {
             }}
           >
             HISTORY
+          </a>
+        </Link>
+        <Link href="/Training_And_Mentoring">
+          <a
+            className={`mobile-nav ${
+              activeNav == "/Training_And_Mentoring" ? "active-mobile-nav" : ""
+            }`}
+            onClick={() => {
+              this.setNav("/Training_And_Mentoring");
+              this.closeModal();
+            }}
+          >
+            TRAINING & MENTORING
+          </a>
+        </Link><Link href="/Information_System">
+          <a
+            className={`mobile-nav ${
+              activeNav == "/Information_System" ? "active-mobile-nav" : ""
+            }`}
+            onClick={() => {
+              this.setNav("/Information_System");
+              this.closeModal();
+            }}
+          >
+            INFORMATION SYSTEM
           </a>
         </Link>
       </React.Fragment>
