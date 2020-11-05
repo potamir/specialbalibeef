@@ -67,9 +67,8 @@ class Header extends Component {
         </Link>
         <Link href="/About_Us">
           <a
-            className={`header-nav ${
-              activeNav == "/About_Us" ? "active-nav" : ""
-            }`}
+            className={`header-nav ${activeNav == "/About_Us" ? "active-nav" : ""
+              }`}
             onClick={() => this.setNav("/About_Us")}
           >
             ABOUT US
@@ -77,9 +76,8 @@ class Header extends Component {
         </Link>
         <Link href="/Products">
           <a
-            className={`header-nav ${
-              activeNav == "/Products" ? "active-nav" : ""
-            }`}
+            className={`header-nav ${activeNav == "/Products" ? "active-nav" : ""
+              }`}
             onClick={() => this.setNav("/Products")}
           >
             PRODUCTS
@@ -87,9 +85,8 @@ class Header extends Component {
         </Link>
         <Link href="/Research_And_Development">
           <a
-            className={`header-nav ${
-              activeNav == "/Research_And_Development" ? "active-nav" : ""
-            }`}
+            className={`header-nav ${activeNav == "/Research_And_Development" ? "active-nav" : ""
+              }`}
             onClick={() => this.setNav("/Research_And_Development")}
           >
             RESEARCH & DEVELOPMENT
@@ -97,9 +94,8 @@ class Header extends Component {
         </Link>
         <Link href="/History">
           <a
-            className={`header-nav ${
-              activeNav == "/History" ? "active-nav" : ""
-            }`}
+            className={`header-nav ${activeNav == "/History" ? "active-nav" : ""
+              }`}
             onClick={() => this.setNav("/History")}
           >
             HISTORY
@@ -107,9 +103,8 @@ class Header extends Component {
         </Link>
         <Link href="/Training_And_Mentoring">
           <a
-            className={`header-nav ${
-              activeNav == "/Training_And_Mentoring" ? "active-nav" : ""
-            }`}
+            className={`header-nav ${activeNav == "/Training_And_Mentoring" ? "active-nav" : ""
+              }`}
             onClick={() => this.setNav("/Training_And_Mentoring")}
           >
             TRAINING & MENTORING
@@ -117,9 +112,8 @@ class Header extends Component {
         </Link>
         <Link href="/Information_System">
           <a
-            className={`header-nav ${
-              activeNav == "/Information_System" ? "active-nav" : ""
-            }`}
+            className={`header-nav ${activeNav == "/Information_System" ? "active-nav" : ""
+              }`}
             onClick={() => this.setNav("/Information_System")}
           >
             INFORMATION SYSTEM
@@ -135,9 +129,8 @@ class Header extends Component {
       <React.Fragment>
         <Link href="/">
           <a
-            className={`mobile-nav ${
-              activeNav == "/" ? "active-mobile-nav" : ""
-            }`}
+            className={`mobile-nav ${activeNav == "/" ? "active-mobile-nav" : ""
+              }`}
             onClick={() => {
               this.setNav("/");
               this.closeModal();
@@ -148,9 +141,8 @@ class Header extends Component {
         </Link>
         <Link href="/About_Us">
           <a
-            className={`mobile-nav ${
-              activeNav == "/About_Us" ? "active-mobile-nav" : ""
-            }`}
+            className={`mobile-nav ${activeNav == "/About_Us" ? "active-mobile-nav" : ""
+              }`}
             onClick={() => {
               this.setNav("/About_Us");
               this.closeModal();
@@ -161,9 +153,8 @@ class Header extends Component {
         </Link>
         <Link href="/Products">
           <a
-            className={`mobile-nav ${
-              activeNav == "/Products" ? "active-mobile-nav" : ""
-            }`}
+            className={`mobile-nav ${activeNav == "/Products" ? "active-mobile-nav" : ""
+              }`}
             onClick={() => {
               this.setNav("/Products");
               this.closeModal();
@@ -174,11 +165,10 @@ class Header extends Component {
         </Link>
         <Link href="/Research_And_Development">
           <a
-            className={`mobile-nav ${
-              activeNav == "/Research_And_Development"
-                ? "active-mobile-nav"
-                : ""
-            }`}
+            className={`mobile-nav ${activeNav == "/Research_And_Development"
+              ? "active-mobile-nav"
+              : ""
+              }`}
             onClick={() => {
               this.setNav("/Research_And_Development");
               this.closeModal();
@@ -189,9 +179,8 @@ class Header extends Component {
         </Link>
         <Link href="/History">
           <a
-            className={`mobile-nav ${
-              activeNav == "/History" ? "active-mobile-nav" : ""
-            }`}
+            className={`mobile-nav ${activeNav == "/History" ? "active-mobile-nav" : ""
+              }`}
             onClick={() => {
               this.setNav("/History");
               this.closeModal();
@@ -202,9 +191,8 @@ class Header extends Component {
         </Link>
         <Link href="/Training_And_Mentoring">
           <a
-            className={`mobile-nav ${
-              activeNav == "/Training_And_Mentoring" ? "active-mobile-nav" : ""
-            }`}
+            className={`mobile-nav ${activeNav == "/Training_And_Mentoring" ? "active-mobile-nav" : ""
+              }`}
             onClick={() => {
               this.setNav("/Training_And_Mentoring");
               this.closeModal();
@@ -214,9 +202,8 @@ class Header extends Component {
           </a>
         </Link><Link href="/Information_System">
           <a
-            className={`mobile-nav ${
-              activeNav == "/Information_System" ? "active-mobile-nav" : ""
-            }`}
+            className={`mobile-nav ${activeNav == "/Information_System" ? "active-mobile-nav" : ""
+              }`}
             onClick={() => {
               this.setNav("/Information_System");
               this.closeModal();
@@ -231,44 +218,49 @@ class Header extends Component {
 
   render() {
     return (
-      <div className="header-wrapper">
-        <div id="myModal" className="modal">
-          <div className="modal-content">
-            <div className="modal-header">
-              <span className="close" onClick={this.closeModal}>
-                &times;
+      <>
+        <div className="header-wrapper">
+          <div id="myModal" className="modal">
+            <div className="modal-content">
+              <div className="modal-header">
+                <span className="close" onClick={this.closeModal}>
+                  &times;
               </span>
-              <h2>Menu</h2>
-            </div>
-            <div className="modal-body">
-              <div className="modal-text">{this.navBarMobile()}</div>
-            </div>
-            <div className="modal-footer">
-              <a className="header-logo sub-header-logo">Special Bali Beef</a>
+                <h2>Menu</h2>
+              </div>
+              <div className="modal-body">
+                <div className="modal-text">{this.navBarMobile()}</div>
+              </div>
+              <div className="modal-footer">
+                <a className="header-logo sub-header-logo">Special Bali Beef</a>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="header-logo-wrapper">
-          {mq.matches ? (
-            <div
-              className="header-menu"
-              onClick={() => {
-                const modal = document.getElementById("myModal");
-                modal.style.display = "block";
-              }}
-            >
-              ≡
-            </div>
-          ) : null}
-          <Link href="/">
-            <p className="header-logo" onClick={() => this.setNav("/")}>
-              Special Bali Beef
+          <div className="header-logo-wrapper">
+            {mq.matches ? (
+              <div
+                className="header-menu"
+                onClick={() => {
+                  const modal = document.getElementById("myModal");
+                  modal.style.display = "block";
+                }}
+              >
+                ≡
+              </div>
+            ) : null}
+            <Link href="/">
+              <p className="header-logo" onClick={() => this.setNav("/")}>
+                Special Bali Beef
             </p>
-          </Link>
+            </Link>
+          </div>
+
         </div>
-        {mq.matches ? null : this.navBarDesktop()}
-      </div>
+        <div className="menubar-wrapper">
+          {mq.matches ? null : this.navBarDesktop()}
+        </div>
+      </>
     );
   }
 }
