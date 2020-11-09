@@ -14,7 +14,7 @@ const Editor = dynamic(
 //   { ssr: false }
 // );
 
-class DisplayProduct extends Component {
+class DisplayItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,9 +30,6 @@ class DisplayProduct extends Component {
     let _768 = window.matchMedia("(max-width: 768px)");
     _768.addListener(this.mediaQueryChanged);
     await this.setState({ _768: _768 });
-    import(`html-to-draftjs`).then(
-      async (module) => await this.setState({ htmlToDraft: module.default })
-    );
     this.getPaymentPage();
   }
 
@@ -67,32 +64,25 @@ class DisplayProduct extends Component {
 
   async getPaymentPage() {
     const { _768 } = this.state;
+    const { html, id } = this.props;
     console.log(_768);
-    await this.setState({ loading: true });
-    await fetch(`http://45.15.24.190:1010/admin_product_get`, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then(async (responseJson) => {
-        let newHtml = responseJson[2].PRODUCTS_HTML;
-        if (_768.matches)
-          newHtml = await this.changeImgStyle(responseJson[2].PRODUCTS_HTML);
-        const blocksFromHtml = this.state.htmlToDraft(newHtml);
-        const { contentBlocks, entityMap } = blocksFromHtml;
-        const contentState = ContentState.createFromBlockArray(
-          contentBlocks,
-          entityMap
-        );
-        const editorState = EditorState.createWithContent(contentState);
-        await this.setState({
-          html: editorState,
-          aaa: newHtml,
-        });
+    let newHtml = html[id].PRODUCTS_HTML;
+    console.log(newHtml);
+    if (_768.matches)
+      newHtml = await this.changeImgStyle(html[id].PRODUCTS_HTML);
+    import(`html-to-draftjs`).then(async (module) => {
+      const htmlToDraft = module.default;
+      const blocksFromHtml = htmlToDraft(newHtml);
+      const { contentBlocks, entityMap } = blocksFromHtml;
+      const contentState = ContentState.createFromBlockArray(
+        contentBlocks,
+        entityMap
+      );
+      const editorState = EditorState.createWithContent(contentState);
+      await this.setState({
+        html: editorState,
       });
+    });
   }
 
   render() {
@@ -118,4 +108,4 @@ class DisplayProduct extends Component {
   }
 }
 
-export default DisplayProduct;
+export default DisplayItem;
