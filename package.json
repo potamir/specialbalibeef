@@ -8,9 +8,20 @@
     "start": "next start"
   },
   "dependencies": {
+    "draft-js": "^0.11.7",
+    "draft-js-custom-styles": "^2.1.1",
+    "draft-js-raw-content-state": "^1.2.7",
+    "draftjs-to-html": "^0.9.1",
+    "html-parse-stringify": "^2.0.0",
+    "html-react-parser": "^0.14.1",
+    "html-to-draftjs": "^1.5.0",
+    "inline-css": "^3.0.0",
+    "juice": "^7.0.0",
     "next": "9.5.5",
     "next-images": "^1.6.0",
     "react": "16.14.0",
-    "react-dom": "16.14.0"
+    "react-dom": "16.14.0",
+    "react-draft-wysiwyg": "^1.14.5",
+    "styled-components": "^5.2.1"
   }
 }

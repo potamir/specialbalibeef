@@ -1,7 +1,7 @@
 // import "bootstrap/dist/css/bootstrap.min.css";
 import Head from "next/head";
 import Header from "../layouts/Header";
-// import "../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import "../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "./index.css";
 import "./index_992.css";
 import "./index_768.css";

@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import ComingSoon from "../../layouts/ComingSoon";
+import DisplayProduct from "../../layouts/DisplayProduct";
 
 class Products extends Component {
   render() {
     return (
       <div>
-        Products
-        <ComingSoon />
+        <DisplayProduct />
       </div>
     );
   }
