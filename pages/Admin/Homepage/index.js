@@ -18,7 +18,7 @@ class ContentPage extends Component {
     };
     this.onEditorStateChange = this.onEditorStateChange.bind(this);
     this.submitHtml = this.submitHtml.bind(this);
-    this.getPaymentPage = this.getPaymentPage.bind(this);
+    // this.getPaymentPage = this.getPaymentPage.bind(this);
   }
 
   async componentDidMount() {
