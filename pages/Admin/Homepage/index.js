@@ -31,28 +31,28 @@ class ContentPage extends Component {
     });
   }
 
-  async getPaymentPage() {
-    await this.setState({ loading: true });
-    await fetch(`http://${address}/py_page_get`, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then(async (responseJson) => {
-        const blocksFromHtml = htmlToDraft(responseJson[0].py_page_content);
-        const { contentBlocks, entityMap } = blocksFromHtml;
-        const contentState = ContentState.createFromBlockArray(
-          contentBlocks,
-          entityMap
-        );
-        const editorState = EditorState.createWithContent(contentState);
-        this.onEditorStateChange(editorState);
-        this.setState({ loading: false });
-      });
-  }
+  // async getPaymentPage() {
+  //   await this.setState({ loading: true });
+  //   await fetch(`http://${address}/py_page_get`, {
+  //     method: "GET",
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "application/json",
+  //     },
+  //   })
+  //     .then((response) => response.json())
+  //     .then(async (responseJson) => {
+  //       const blocksFromHtml = htmlToDraft(responseJson[0].py_page_content);
+  //       const { contentBlocks, entityMap } = blocksFromHtml;
+  //       const contentState = ContentState.createFromBlockArray(
+  //         contentBlocks,
+  //         entityMap
+  //       );
+  //       const editorState = EditorState.createWithContent(contentState);
+  //       this.onEditorStateChange(editorState);
+  //       this.setState({ loading: false });
+  //     });
+  // }
 
   async uploadImageCallBack(file) {
     return new Promise((resolve, reject) => {
@@ -75,7 +75,7 @@ class ContentPage extends Component {
   async submitHtml() {
     await this.setState({ loading: true });
     const { editorState } = this.state;
-    await fetch(`http://45.15.24.190:1010/admin_product_post`, {
+    await fetch(`https://45.15.24.190:1010/admin_product_post`, {
       method: "POST",
       headers: {
         Accept: "application/json",

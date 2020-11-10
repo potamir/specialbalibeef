@@ -16,7 +16,7 @@ class Products extends Component {
     this.getPaymentPage();
   }
   async getPaymentPage() {
-    await fetch(`http://45.15.24.190:1010/admin_product_get`, {
+    await fetch(`https://45.15.24.190:1010/admin_product_get`, {
       method: "GET",
       headers: {
         Accept: "application/json",
