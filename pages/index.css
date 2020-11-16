@@ -414,3 +414,18 @@ body {
   background-color: #eba95e;
   color: #eba95e;
 }
+
+.LoginContainer {
+  margin-top: 5em;
+  text-align: center;
+}
+
+.LoginUsername {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.LoginPassword {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
