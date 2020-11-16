@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import dynamic from "next/dynamic";
 import { EditorState, convertToRaw } from "draft-js";
-import Placeholders from "../../../layouts/Placeholders";
+import Placeholders from "./Placeholders";
 import * as draftToHtml from "draftjs-to-html";
 
 const Editor = dynamic(
@@ -9,7 +9,7 @@ const Editor = dynamic(
   { ssr: false }
 );
 
-class ContentPage extends Component {
+class AdminEditor extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,29 +30,6 @@ class ContentPage extends Component {
       editorState,
     });
   }
-
-  // async getPaymentPage() {
-  //   await this.setState({ loading: true });
-  //   await fetch(`http://${address}/py_page_get`, {
-  //     method: "GET",
-  //     headers: {
-  //       Accept: "application/json",
-  //       "Content-Type": "application/json",
-  //     },
-  //   })
-  //     .then((response) => response.json())
-  //     .then(async (responseJson) => {
-  //       const blocksFromHtml = htmlToDraft(responseJson[0].py_page_content);
-  //       const { contentBlocks, entityMap } = blocksFromHtml;
-  //       const contentState = ContentState.createFromBlockArray(
-  //         contentBlocks,
-  //         entityMap
-  //       );
-  //       const editorState = EditorState.createWithContent(contentState);
-  //       this.onEditorStateChange(editorState);
-  //       this.setState({ loading: false });
-  //     });
-  // }
 
   async uploadImageCallBack(file) {
     return new Promise((resolve, reject) => {
@@ -98,6 +75,10 @@ class ContentPage extends Component {
     return (
       <div className="PaymentMain">
         <div className="OriginPaymentDesc">
+          <div>
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" className="" />
+          </div>
           <Editor
             editorState={this.state.editorState}
             toolbarClassName="toolbarClassName"
@@ -126,4 +107,4 @@ class ContentPage extends Component {
   }
 }
 
-export default ContentPage;
+export default AdminEditor;

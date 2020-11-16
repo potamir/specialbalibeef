@@ -1,19 +1,23 @@
 import React, { Component } from "react";
-import DisplayItem from "../../layouts/DisplayItem";
-import ListItems from "../../layouts/ListItems";
+import ListItems from "../../../layouts/ListItems";
 
-class Products extends Component {
+class AdminProducts extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      loading: false,
       html: "",
-      id: null,
+      id: "",
     };
     this.getContents = this.getContents.bind(this);
     this.setId = this.setId.bind(this);
   }
-  componentDidMount() {
-    this.getContents();
+
+  async componentDidMount() {
+    await this.getContents();
+  }
+  async setId(param) {
+    await this.setState({ id: param });
   }
   async getContents() {
     await fetch(`https://45.15.24.190:1010/admin_product_get`, {
@@ -28,30 +32,21 @@ class Products extends Component {
         await this.setState({ html: responseJson });
       });
   }
-  async setId(param) {
-    await this.setState({ id: param });
-  }
+
   render() {
     const { html, id } = this.state;
-    console.log(this.state);
     return (
       <>
         {html != "" ? (
-          <>
-            {id != null ? (
-              <DisplayItem getContents={this.getContents} html={html} id={id} />
-            ) : (
-              <ListItems html={html} setId={this.setId} comName={"Products"} />
-            )}
-          </>
+          <ListItems
+            html={html}
+            setId={this.setId}
+            comName={"Admin/Products/Edit"}
+          />
         ) : null}
       </>
     );
   }
 }
 
-export default Products;
-
-{
-  /*<DisplayItem getContents={this.getContents} html={html} />*/
-}
+export default AdminProducts;

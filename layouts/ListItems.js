@@ -8,17 +8,30 @@ class ListItems extends Component {
   }
   componentDidMount() {}
   render() {
-    const { html, setId } = this.props;
+    const { html, setId, comName } = this.props;
     return (
-      <ul>
-        {html.map((value, index) => {
-          return (
-            <Link href={`/Products?id=${value.ID}`}>
-              <li onClick={() => setId(index)}> Item {value.ID} </li>
-            </Link>
-          );
-        })}
-      </ul>
+      <div className="list-item-main-div">
+        <div className="list-item-inner-div">
+          {html.map((value, index) => {
+            return (
+              <Link href={`/${comName}?id=${value.ID}`}>
+                <div className="list-item-wrapper" onClick={() => setId(index)}>
+                  <div className="list-item-title">
+                    <p>Title</p>
+                  </div>
+                  <div className="list-item-image-div">
+                    <img
+                      className="list-item-image"
+                      src="https://i.imgur.com/OsvZsXT.jpg"
+                    />
+                  </div>
+                  <div> Item {value.ID} </div>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
     );
   }
 }
