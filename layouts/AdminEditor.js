@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import { EditorState, convertToRaw } from "draft-js";
 import Placeholders from "./Placeholders";
 import * as draftToHtml from "draftjs-to-html";
+import Router from "next/router";
 
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
@@ -64,9 +65,13 @@ class AdminEditor extends Component {
     })
       .then((response) => response.json())
       .then(async (responseJson) => {
-        if (responseJson.status === "success")
+        if (responseJson.status === "success") {
+          Router.push("/Products");
           this.setState({ loading: false });
-        else console.log(status);
+        } else {
+          alert("fail");
+          console.log(status);
+        }
       });
   }
 

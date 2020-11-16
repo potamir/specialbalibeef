@@ -44,3 +44,6 @@
   width: 200px;
   height: auto;
 }
+.list-item-content {
+  padding: 2rem;
+}
