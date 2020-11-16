@@ -219,6 +219,7 @@ class Header extends Component {
   render() {
     return (
       <>
+
         <div className="header-wrapper">
           <div id="myModal" className="modal">
             <div className="modal-content">
