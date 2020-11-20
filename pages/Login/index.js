@@ -14,7 +14,7 @@ class Admin extends Component {
   }
 
   async login() {
-    await fetch(`https://45.15.24.190:1110/admin_login`, {
+    await fetch(`http://45.15.24.190:1110/admin_login`, {
       method: "POST",
       headers: {
         Accept: "application/json",

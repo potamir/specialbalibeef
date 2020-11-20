@@ -20,7 +20,7 @@ class AdminProducts extends Component {
     await this.setState({ id: param });
   }
   async getContents() {
-    await fetch(`https://45.15.24.190:1010/admin_product_get`, {
+    await fetch(`http://45.15.24.190:1010/admin_product_get`, {
       method: "GET",
       headers: {
         Accept: "application/json",
