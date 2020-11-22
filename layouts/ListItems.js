@@ -40,16 +40,17 @@ class ListItems extends Component {
             return (
               <div className="list-item-wrapper" onClick={() => setId(index)}>
                 <div className="list-item-title">
-                  <p>Title</p>
+                  <p>{value.TITLE}</p>
                 </div>
                 <div className="list-item-image-div">
                   <img className="list-item-image" src={dispImg} />
                 </div>
                 <div className="list-item-content"> {finalCont} </div>
                 {comName == "Admin/Products/Edit" ? (
-                  <div>
-                    <div>Delete</div>
+                  <div className="list-item-choose">
+                    <div className="list-item-choose-button">Delete</div>
                     <div
+                      className="list-item-choose-button"
                       onClick={() =>
                         this.nextRouteHandler(comName, index, value, true)
                       }

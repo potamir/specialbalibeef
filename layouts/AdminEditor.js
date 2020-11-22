@@ -117,32 +117,39 @@ class AdminEditor extends Component {
   render() {
     const { editorState } = this.state;
     return (
-      <div className="PaymentMain">
-        <div className="OriginPaymentDesc">
-          <div>
-            <label for="title">Title</label>
-            <input type="text" id="title" name="title" className="" />
+      <div className="admin-editor-main-div">
+        <div className="admin-editor-inner-div">
+          <div className="admin-editor-title-div">
+            <label for="title" className="admin-editor-title">
+              Title:
+            </label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              className="admin-editor-input"
+              maxlength="60"
+            />
           </div>
-          <Editor
-            editorState={this.state.editorState}
-            toolbarClassName="toolbarClassName"
-            wrapperClassName="wrapperClassName"
-            editorClassName="editorClassName additionalEditor"
-            onEditorStateChange={this.onEditorStateChange}
-            toolbar={{
-              image: {
-                uploadCallback: this.uploadImageCallBack,
-                alt: { present: true, mandatory: false },
-              },
-            }}
-            // toolbarCustomButtons={[<Placeholders />]}
-          />
+          <div className="admin-editor-div">
+            <Editor
+              editorState={this.state.editorState}
+              toolbarClassName="toolbarClassName"
+              wrapperClassName="wrapperClassName"
+              editorClassName="editorClassName additionalEditor"
+              onEditorStateChange={this.onEditorStateChange}
+              toolbar={{
+                image: {
+                  uploadCallback: this.uploadImageCallBack,
+                  alt: { present: true, mandatory: false },
+                },
+              }}
+              // toolbarCustomButtons={[<Placeholders />]}
+            />
+          </div>
         </div>
-        <div className="pyPageBtnDiv">
-          <button
-            onClick={this.submitHtml}
-            className="paymentEditBtn normalBtn"
-          >
+        <div className="admin-editor-button-div">
+          <button onClick={this.submitHtml} className="admin-editor-button">
             Submit Changes
           </button>
         </div>

@@ -184,6 +184,7 @@ body {
 }
 .footer-support {
   font-weight: bold;
+  text-align: center;
   font-size: 0.8rem;
   padding: 2rem 2rem 2rem 3rem;
 }
@@ -458,6 +459,7 @@ body {
 .admin-inner-div:hover {
   background-color: #aaa;
   font-size: 1.6rem;
+  color: #fff;
 }
 .admin-inner-div:nth-child(odd):hover {
   background-color: #df9a4b;
