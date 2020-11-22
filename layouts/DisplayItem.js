@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { EditorState, ContentState } from "draft-js";
 import styled from "styled-components";
 import dynamic from "next/dynamic";
-import Kaca from "html-parse-stringify";
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
   { ssr: false }
@@ -86,6 +85,7 @@ class DisplayItem extends Component {
   }
 
   render() {
+    console.log("====>>>>",this.props);
     const { _768 } = this.state;
     const StyledWrapper = _768.matches
       ? this.mobileDisplay()

@@ -36,7 +36,7 @@ class Admin extends Component {
           //     state: { status: responseJson.status },
           // });
           console.log(responseJson, "SUCCESS");
-          Router.push("/Admin/Products/Edit");
+          Router.push("/Admin");
         } else {
           alert("fail login");
           // await this.setState({

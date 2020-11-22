@@ -21,11 +21,15 @@ class AdminProducts extends Component {
   }
   async getContents() {
     await fetch(`http://45.15.24.190:1010/admin_product_get`, {
-      method: "GET",
+      method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
+      body: JSON.stringify({
+        from: 0,
+        to: 9,
+      }),
     })
       .then((response) => response.json())
       .then(async (responseJson) => {

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Link from "next/link";
+import Router from "next/router";
 
 class ListItems extends Component {
   constructor(props) {
@@ -7,8 +8,14 @@ class ListItems extends Component {
     this.state = {};
   }
   componentDidMount() {}
+  nextRouteHandler(comName, index, value, status) {
+    Router.push({
+      pathname: `/${comName}`,
+      query: { index: `${index}`, id: value.ID, status: status },
+    });
+  }
   render() {
-    const { html, setId, comName } = this.props;
+    const { html, setId, comName, admin } = this.props;
     return (
       <div className="list-item-main-div">
         <div className="list-item-inner-div">
@@ -31,18 +38,36 @@ class ListItems extends Component {
               finalCont = newDisContent.substring(0, 100) + "...";
             else finalCont = "no Desc";
             return (
-              <Link href={`/${comName}?id=${value.ID}`}>
-                <div className="list-item-wrapper" onClick={() => setId(index)}>
-                  <div className="list-item-title">
-                    <p>Title</p>
-                  </div>
-                  <div className="list-item-image-div">
-                    <img className="list-item-image" src={dispImg} />
-                  </div>
-                  <div className="list-item-content"> {finalCont} </div>
-                  <h3>Read More ></h3>
+              <div className="list-item-wrapper" onClick={() => setId(index)}>
+                <div className="list-item-title">
+                  <p>Title</p>
                 </div>
-              </Link>
+                <div className="list-item-image-div">
+                  <img className="list-item-image" src={dispImg} />
+                </div>
+                <div className="list-item-content"> {finalCont} </div>
+                {comName == "Admin/Products/Edit" ? (
+                  <div>
+                    <div>Delete</div>
+                    <div
+                      onClick={() =>
+                        this.nextRouteHandler(comName, index, value, true)
+                      }
+                    >
+                      Edit
+                    </div>
+                  </div>
+                ) : (
+                  <div
+                    className="read-more"
+                    onClick={() =>
+                      this.nextRouteHandler(comName, index, value, false)
+                    }
+                  >
+                    Read More >>
+                  </div>
+                )}
+              </div>
             );
           })}
         </div>

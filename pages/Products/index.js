@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import DisplayItem from "../../layouts/DisplayItem";
 import ListItems from "../../layouts/ListItems";
+import { withRouter } from "next/router";
 
 class Products extends Component {
   constructor(props) {
@@ -15,13 +16,29 @@ class Products extends Component {
   componentDidMount() {
     this.getContents();
   }
+  componentDidUpdate() {
+    const { id } = this.state;
+    const { router } = this.props;
+    console.log("ROUTER", router);
+    const currUrlID = router.query.index;
+    if (!id && currUrlID) {
+      this.setState({ id: currUrlID });
+    } else if (id && !currUrlID) {
+      this.setState({ id: null });
+    }
+    console.log("======>>>", window.location.href.split("id=")[1]);
+  }
   async getContents() {
     await fetch(`http://45.15.24.190:1010/admin_product_get`, {
-      method: "GET",
+      method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
+      body: JSON.stringify({
+        from: 0,
+        to: 9,
+      }),
     })
       .then((response) => response.json())
       .then(async (responseJson) => {
@@ -50,7 +67,7 @@ class Products extends Component {
   }
 }
 
-export default Products;
+export default withRouter(Products);
 
 {
   /*<DisplayItem getContents={this.getContents} html={html} />*/

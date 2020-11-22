@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import dynamic from "next/dynamic";
-import { EditorState, convertToRaw } from "draft-js";
+import { EditorState, convertToRaw, ContentState } from "draft-js";
 import Placeholders from "./Placeholders";
 import * as draftToHtml from "draftjs-to-html";
-import Router from "next/router";
+import Router, { withRouter } from "next/router";
 
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
@@ -23,13 +23,52 @@ class AdminEditor extends Component {
   }
 
   async componentDidMount() {
-    // this.getPaymentPage();
+    const param = window.location.href.split("?")[1];
+    const paramSplitted = param ? param.split("&") : null;
+    if (paramSplitted) {
+      const status = paramSplitted[2]
+        ? paramSplitted[2].split("status=")[1]
+        : false;
+      if (status) {
+        const id = paramSplitted[1].split("id=")[1];
+        const index = paramSplitted[0].split("index=")[1];
+        this.getContents(parseInt(index));
+      }
+    }
   }
 
   onEditorStateChange(editorState) {
     this.setState({
       editorState,
     });
+  }
+
+  async getContents(index) {
+    await fetch(`http://45.15.24.190:1010/admin_product_get`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: index,
+        to: 1,
+      }),
+    })
+      .then((response) => response.json())
+      .then(async (responseJson) => {
+        import(`html-to-draftjs`).then(async (module) => {
+          const htmlToDraft = module.default;
+          const blocksFromHtml = htmlToDraft(responseJson[0].PRODUCTS_HTML);
+          const { contentBlocks, entityMap } = blocksFromHtml;
+          const contentState = ContentState.createFromBlockArray(
+            contentBlocks,
+            entityMap
+          );
+          const editorState = EditorState.createWithContent(contentState);
+          this.onEditorStateChange(editorState);
+        });
+      });
   }
 
   async uploadImageCallBack(file) {
@@ -112,4 +151,4 @@ class AdminEditor extends Component {
   }
 }
 
-export default AdminEditor;
+export default withRouter(AdminEditor);

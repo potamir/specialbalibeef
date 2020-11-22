@@ -47,7 +47,7 @@ body {
   cursor: pointer;
   width: fit-content;
   font-family: Arial, Helvetica, sans-serif;
-  color: #FFCD94;
+  color: #ffcd94;
 }
 .header-logo:hover {
   opacity: 0.9;
@@ -76,12 +76,12 @@ body {
 
 .header-nav:hover,
 .header-active::after {
-  color: #FFCD94;
+  color: #ffcd94;
   opacity: 0.9;
   cursor: pointer;
 }
 .active-nav {
-  color: #FFCD94;
+  color: #ffcd94;
 }
 
 .home-wrapper {
@@ -428,4 +428,37 @@ body {
 .LoginPassword {
   margin-top: 1em;
   margin-bottom: 1em;
+}
+
+.admin-main-div {
+  min-height: 80vh;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-inner-div {
+  flex: 1;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #bbb;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin: 1rem;
+}
+.admin-inner-div:nth-child(odd) {
+  background-color: #eba95e;
+}
+.admin-inner-div:hover {
+  background-color: #aaa;
+  font-size: 1.6rem;
+}
+.admin-inner-div:nth-child(odd):hover {
+  background-color: #df9a4b;
 }
