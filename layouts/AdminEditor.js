@@ -125,7 +125,8 @@ class AdminEditor extends Component {
 
   async submitHtml() {
     await this.setState({ loading: true });
-    const { editorState, title, page } = this.state;
+    const { page } = this.props;
+    const { editorState, title } = this.state;
     await fetch(`http://45.15.24.190:1010/admin_html_post`, {
       method: "POST",
       headers: {

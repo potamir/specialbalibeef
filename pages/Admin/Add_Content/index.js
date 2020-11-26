@@ -6,9 +6,11 @@ const options = [
   { value: "RND", label: "Reserch & Development" },
   { value: "PRODUCTS", label: "Products" },
   { value: "HISTORY", label: "History" },
+  { value: "TNS", label: "Training & Mentoring" },
+  { value: "IS", label: "Information System" },
 ];
 
-class AddProduct extends Component {
+class AddContent extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,7 +19,9 @@ class AddProduct extends Component {
   }
 
   handleChange = (selectedOption) => {
-    console.log(selectedOption);
+    this.setState({ selectedOption }, () =>
+      console.log(`Option selected:`, this.state.selectedOption)
+    );
   };
   render() {
     const { selectedOption } = this.state;
@@ -36,4 +40,4 @@ class AddProduct extends Component {
   }
 }
 
-export default AddProduct;
+export default AddContent;

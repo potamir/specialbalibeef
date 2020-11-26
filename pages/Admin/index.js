@@ -4,8 +4,8 @@ import Router from "next/router";
 
 class Admin extends Component {
   onCLickHandler(param) {
-    if (param == "Edit") Router.push("/Admin/Products");
-    else if (param == "Add") Router.push("/Admin/Add_Product");
+    if (param == "Edit") Router.push("/Admin/Contents");
+    else if (param == "Add") Router.push("/Admin/Add_Content");
   }
   render() {
     return (
@@ -14,13 +14,13 @@ class Admin extends Component {
           className="admin-inner-div"
           onClick={() => this.onCLickHandler("Add")}
         >
-          Add New Product
+          Add New Content
         </div>
         <div
           className="admin-inner-div"
           onClick={() => this.onCLickHandler("Edit")}
         >
-          Manage Products
+          Manage Contents
         </div>
       </div>
     );

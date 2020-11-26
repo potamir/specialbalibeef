@@ -21,15 +21,14 @@ body {
 }
 
 .menubar-wrapper {
-  background-color: #625240;
+  background-color: #df9a4b;
   display: flex;
   flex-direction: row;
-  height: 4rem;
+  height: 2.5rem;
   align-items: flex-end;
-  padding: 0rem 2rem 0rem 2rem;
   border-style: solid;
   border-width: 0px 0px 2px 0px;
-  border-color: #ddd;
+  border-color: #555;
 }
 
 .header-logo-wrapper {
@@ -53,21 +52,23 @@ body {
   opacity: 0.9;
 }
 .header-nav-wrapper {
-  flex: 1;
+  height: 100%;
+  width: 100%;
   display: flex;
-  justify-content: center;
-  margin-bottom: 0.8em;
+  justify-content: flex-start;
 }
 .header-nav {
-  flex: 1;
-  margin-right: 1rem;
+  text-align: center;
+  height: 100%;
+  width: 150px;
   display: flex;
   justify-content: center;
+  align-items: center;
   color: #222;
-  font-size: 1rem;
-  font-weight: 500;
-  margin-right: 1.3em;
+  font-size: 0.8rem;
+  font-weight: bold;
   color: white;
+  transition-duration: 0.4s;
 }
 
 .header-nav:link {
@@ -76,12 +77,14 @@ body {
 
 .header-nav:hover,
 .header-active::after {
-  color: #ffcd94;
+  color: #111;
   opacity: 0.9;
   cursor: pointer;
+  background-color: #ffcd9477;
 }
 .active-nav {
-  color: #ffcd94;
+  color: #111;
+  background-color: #ffcd94;
 }
 
 .home-wrapper {

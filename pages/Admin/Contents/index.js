@@ -7,9 +7,11 @@ const options = [
   { value: "RND", label: "Reserch & Development" },
   { value: "PRODUCTS", label: "Products" },
   { value: "HISTORY", label: "History" },
+  { value: "TNS", label: "Training & Mentoring" },
+  { value: "IS", label: "Information System" },
 ];
 
-class AdminProducts extends Component {
+class AdminContents extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,6 +21,7 @@ class AdminProducts extends Component {
       selectedOption: { value: "RND", label: "Reserch & Development" },
     };
     this.getContents = this.getContents.bind(this);
+    this.deleteContent = this.deleteContent.bind(this);
     this.setId = this.setId.bind(this);
   }
 
@@ -48,6 +51,31 @@ class AdminProducts extends Component {
       });
   }
 
+  async deleteContent(id) {
+    const { selectedOption } = this.state;
+    console.log("abc", selectedOption, id);
+    await fetch(`http://45.15.24.190:1010/admin_html_delete`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        tableName: CONSTANT.TABLE_LIST[selectedOption.value],
+        id: id,
+      }),
+    })
+      .then((response) => response.json())
+      .then(async (responseJson) => {
+        if (responseJson.status === "success") {
+          this.getContents();
+        } else {
+          alert("fail");
+          console.log(status);
+        }
+      });
+  }
+
   handleChange = (selectedOption) => {
     this.setState({ selectedOption }, () => this.getContents());
   };
@@ -67,8 +95,9 @@ class AdminProducts extends Component {
           <ListItems
             html={html}
             setId={this.setId}
-            comName={"Admin/Products/Edit"}
+            comName={"Admin/Contents/Edit"}
             page={selectedOption.value}
+            deleteContent={this.deleteContent}
           />
         ) : null}
       </>
@@ -76,4 +105,4 @@ class AdminProducts extends Component {
   }
 }
 
-export default AdminProducts;
+export default AdminContents;

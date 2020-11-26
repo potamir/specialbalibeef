@@ -21,7 +21,7 @@ class ListItems extends Component {
     });
   }
   render() {
-    const { html, setId, comName, admin } = this.props;
+    const { html, setId, comName, admin, deleteContent } = this.props;
     return (
       <div className="list-item-main-div">
         <div className="list-item-inner-div">
@@ -52,9 +52,14 @@ class ListItems extends Component {
                   <img className="list-item-image" src={dispImg} />
                 </div>
                 <div className="list-item-content"> {finalCont} </div>
-                {comName == "Admin/Products/Edit" ? (
+                {comName == "Admin/Contents/Edit" ? (
                   <div className="list-item-choose">
-                    <div className="list-item-choose-button">Delete</div>
+                    <div
+                      className="list-item-choose-button"
+                      onClick={() => deleteContent(value.ID)}
+                    >
+                      Delete
+                    </div>
                     <div
                       className="list-item-choose-button"
                       onClick={() =>
