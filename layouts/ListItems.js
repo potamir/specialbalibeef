@@ -9,9 +9,15 @@ class ListItems extends Component {
   }
   componentDidMount() {}
   nextRouteHandler(comName, index, value, status) {
+    const { page } = this.props;
     Router.push({
       pathname: `/${comName}`,
-      query: { index: `${index}`, id: value.ID, status: status },
+      query: {
+        index: `${index}`,
+        id: value.ID,
+        status: status,
+        page: page,
+      },
     });
   }
   render() {
@@ -21,7 +27,7 @@ class ListItems extends Component {
         <div className="list-item-inner-div">
           {html.map((value, index) => {
             const temp = document.createElement("div");
-            temp.innerHTML = value.PRODUCTS_HTML;
+            temp.innerHTML = value.HTML;
             const htmlObject = temp;
             const stImage = htmlObject.getElementsByTagName("IMG")[0];
             const dispImg = stImage

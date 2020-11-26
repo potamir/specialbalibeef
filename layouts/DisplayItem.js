@@ -65,10 +65,10 @@ class DisplayItem extends Component {
     const { _768 } = this.state;
     const { html, id } = this.props;
     console.log(_768);
-    let newHtml = html[id].PRODUCTS_HTML;
+    let newHtml = html[id].HTML;
     console.log(newHtml);
     if (_768.matches)
-      newHtml = await this.changeImgStyle(html[id].PRODUCTS_HTML);
+      newHtml = await this.changeImgStyle(html[id].HTML);
     import(`html-to-draftjs`).then(async (module) => {
       const htmlToDraft = module.default;
       const blocksFromHtml = htmlToDraft(newHtml);

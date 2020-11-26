@@ -4,6 +4,7 @@ import { EditorState, convertToRaw, ContentState } from "draft-js";
 import Placeholders from "./Placeholders";
 import * as draftToHtml from "draftjs-to-html";
 import Router, { withRouter } from "next/router";
+import * as CONSTANT from "../helpers/constant";
 
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
@@ -16,9 +17,15 @@ class AdminEditor extends Component {
     this.state = {
       editorState: EditorState.createEmpty(),
       loading: false,
+      status: false,
+      title: "",
+      id: "",
+      page: "",
     };
     this.onEditorStateChange = this.onEditorStateChange.bind(this);
     this.submitHtml = this.submitHtml.bind(this);
+    this.editHtml = this.editHtml.bind(this);
+    this.titleHandler = this.titleHandler.bind(this);
     // this.getPaymentPage = this.getPaymentPage.bind(this);
   }
 
@@ -32,7 +39,10 @@ class AdminEditor extends Component {
       if (status) {
         const id = paramSplitted[1].split("id=")[1];
         const index = paramSplitted[0].split("index=")[1];
-        this.getContents(parseInt(index));
+        const page = paramSplitted[3].split("page=")[1];
+        console.log(id);
+        this.getContents(parseInt(index), page);
+        this.setState({ status: status, id: id, page: page });
       }
     }
   }
@@ -43,8 +53,9 @@ class AdminEditor extends Component {
     });
   }
 
-  async getContents(index) {
-    await fetch(`http://45.15.24.190:1010/admin_product_get`, {
+  async getContents(index, page) {
+    console.log(page);
+    await fetch(`http://45.15.24.190:1010/admin_html_get`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -53,13 +64,14 @@ class AdminEditor extends Component {
       body: JSON.stringify({
         from: index,
         to: 1,
+        tableName: CONSTANT.TABLE_LIST[page],
       }),
     })
       .then((response) => response.json())
       .then(async (responseJson) => {
         import(`html-to-draftjs`).then(async (module) => {
           const htmlToDraft = module.default;
-          const blocksFromHtml = htmlToDraft(responseJson[0].PRODUCTS_HTML);
+          const blocksFromHtml = htmlToDraft(responseJson[0].HTML);
           const { contentBlocks, entityMap } = blocksFromHtml;
           const contentState = ContentState.createFromBlockArray(
             contentBlocks,
@@ -68,14 +80,18 @@ class AdminEditor extends Component {
           const editorState = EditorState.createWithContent(contentState);
           this.onEditorStateChange(editorState);
         });
+        this.setState({ title: responseJson[0].TITLE });
       });
   }
 
   async uploadImageCallBack(file) {
+    console.log(file);
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       xhr.open("POST", "https://api.imgur.com/3/image");
       xhr.setRequestHeader("Authorization", "Client-ID 25153815073b152");
+      xhr.setRequestHeader("Cache-Control", null);
+      xhr.setRequestHeader("X-Requested-With", null);
       const data = new FormData();
       data.append("image", file);
       xhr.send(data);
@@ -89,10 +105,28 @@ class AdminEditor extends Component {
       });
     });
   }
+
+  // uploadImageCallBack = (file) =>
+  //   new Promise((resolve, reject) => {
+  //     var reader = new FileReader();
+  //     reader.readAsDataURL(file);
+  //     let img = new Image();
+  //     // let url = ''
+  //     reader.onload = function (e) {
+  //       img.src = this.result;
+  //       console.log(img.src);
+  //       resolve({
+  //         data: {
+  //           link: img.src,
+  //         },
+  //       });
+  //     };
+  //   });
+
   async submitHtml() {
     await this.setState({ loading: true });
-    const { editorState } = this.state;
-    await fetch(`https://45.15.24.190:1010/admin_product_post`, {
+    const { editorState, title, page } = this.state;
+    await fetch(`http://45.15.24.190:1010/admin_html_post`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -100,6 +134,36 @@ class AdminEditor extends Component {
       },
       body: JSON.stringify({
         html: draftToHtml(convertToRaw(editorState.getCurrentContent())),
+        tableName: CONSTANT.TABLE_LIST[page],
+        title: title,
+      }),
+    })
+      .then((response) => response.json())
+      .then(async (responseJson) => {
+        if (responseJson.status === "success") {
+          Router.push("/Products");
+          this.setState({ loading: false });
+        } else {
+          alert("fail");
+          console.log(status);
+        }
+      });
+  }
+  async editHtml() {
+    await this.setState({ loading: true });
+    const { editorState, title, id, page } = this.state;
+    console.log(draftToHtml(convertToRaw(editorState.getCurrentContent())));
+    await fetch(`http://45.15.24.190:1010/admin_html_edit`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        html: draftToHtml(convertToRaw(editorState.getCurrentContent())),
+        tableName: CONSTANT.TABLE_LIST[page],
+        id: id,
+        title: title,
       }),
     })
       .then((response) => response.json())
@@ -114,8 +178,12 @@ class AdminEditor extends Component {
       });
   }
 
+  titleHandler(e) {
+    this.setState({ title: e.target.value });
+  }
+
   render() {
-    const { editorState } = this.state;
+    const { editorState, title, status } = this.state;
     return (
       <div className="admin-editor-main-div">
         <div className="admin-editor-inner-div">
@@ -129,6 +197,8 @@ class AdminEditor extends Component {
               name="title"
               className="admin-editor-input"
               maxlength="60"
+              value={title}
+              onChange={(e) => this.titleHandler(e)}
             />
           </div>
           <div className="admin-editor-div">
@@ -140,8 +210,13 @@ class AdminEditor extends Component {
               onEditorStateChange={this.onEditorStateChange}
               toolbar={{
                 image: {
+                  urlEnabled: false,
+                  uploadEnabled: true,
+                  alignmentEnabled: true, // Whether to display the arrange button is equivalent to text-align
                   uploadCallback: this.uploadImageCallBack,
-                  alt: { present: true, mandatory: false },
+                  previewImage: true,
+                  inputAccept: "image/*",
+                  alt: { present: false, mandatory: false },
                 },
               }}
               // toolbarCustomButtons={[<Placeholders />]}
@@ -149,7 +224,10 @@ class AdminEditor extends Component {
           </div>
         </div>
         <div className="admin-editor-button-div">
-          <button onClick={this.submitHtml} className="admin-editor-button">
+          <button
+            onClick={() => (status ? this.editHtml() : this.submitHtml())}
+            className="admin-editor-button"
+          >
             Submit Changes
           </button>
         </div>

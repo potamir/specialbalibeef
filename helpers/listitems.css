@@ -38,7 +38,12 @@
 }
 .list-item-title {
   font-size: 1;
-  flex: 2;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  border-style: solid;
+  border-width: 0px 0px 1px 0px;
+  border-color: #999;
 }
 .list-item-image-div {
   height: 200px;
@@ -76,6 +81,10 @@
   align-items: center;
   margin-bottom: 0.3rem;
   color: inherit;
+  border-style: solid;
+  padding-top: 0.5rem;
+  border-width: 1px 0px 0px 0px;
+  border-color: #999;
 }
 .list-item-choose-button {
   flex: 1;
@@ -85,22 +94,30 @@
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  color: #e23535;
   border-style: solid;
   border-width: 1px;
   border-radius: 1rem;
   margin: 0.3rem;
   transition-duration: 0.4s;
   cursor: pointer;
+  background-image: url("../assets/Delete.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50%;
+  color: transparent;
+  border-color: transparent;
 }
 .list-item-choose-button:nth-child(even) {
-  color: #4242d6;
+  background-image: url("../assets/Edit.png");
 }
 .list-item-choose-button:hover {
   background-color: #e23535;
-  color: inherit;
+  color: #111;
+  border-color: #e23535;
+  background-size: 0%;
 }
 .list-item-choose-button:nth-child(even):hover {
   background-color: #4242d6;
-  color: inherit;
+  color: #111;
+  border-color: #4242d6;
 }

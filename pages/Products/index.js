@@ -29,7 +29,7 @@ class Products extends Component {
     console.log("======>>>", window.location.href.split("id=")[1]);
   }
   async getContents() {
-    await fetch(`http://45.15.24.190:1010/admin_product_get`, {
+    await fetch(`http://45.15.24.190:1010/admin_html_get`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -38,6 +38,7 @@ class Products extends Component {
       body: JSON.stringify({
         from: 0,
         to: 9,
+        tableName: "ADMIN_PRODUCTS",
       }),
     })
       .then((response) => response.json())
@@ -56,9 +57,19 @@ class Products extends Component {
         {html != "" ? (
           <>
             {id != null ? (
-              <DisplayItem getContents={this.getContents} html={html} id={id} />
+              <DisplayItem
+                getContents={this.getContents}
+                html={html}
+                id={id}
+                page={"PRODUCTS"}
+              />
             ) : (
-              <ListItems html={html} setId={this.setId} comName={"Products"} />
+              <ListItems
+                html={html}
+                setId={this.setId}
+                comName={"Products"}
+                page={"PRODUCTS"}
+              />
             )}
           </>
         ) : null}

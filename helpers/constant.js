@@ -1,0 +1,6 @@
+export const ENDPOINT = "45.15.24.190:1010/";
+export const TABLE_LIST = {
+  RND: "ADMIN_RND",
+  HISTORY: "ADMIN_HISTORY",
+  PRODUCTS: "ADMIN_PRODUCTS",
+};
