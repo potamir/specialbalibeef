@@ -100,7 +100,7 @@
   margin: 0.3rem;
   transition-duration: 0.4s;
   cursor: pointer;
-  background-image: url("../assets/Delete.png");
+  background-image: url("../assets/delete.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 50%;
@@ -108,7 +108,7 @@
   border-color: transparent;
 }
 .list-item-choose-button:nth-child(even) {
-  background-image: url("../assets/Edit.png");
+  background-image: url("../assets/edit.png");
 }
 .list-item-choose-button:hover {
   background-color: #e23535;
