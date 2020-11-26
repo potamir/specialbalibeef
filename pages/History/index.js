@@ -67,7 +67,7 @@ class History extends Component {
               <ListItems
                 html={html}
                 setId={this.setId}
-                comName={"HISTORY"}
+                comName={"History"}
                 page={"HISTORY"}
               />
             )}
