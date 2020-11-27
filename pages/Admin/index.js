@@ -3,6 +3,12 @@ import ComingSoon from "../../layouts/ComingSoon";
 import Router from "next/router";
 
 class Admin extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      priv: "",
+    };
+  }
   onCLickHandler(param) {
     if (param == "Edit") Router.push("/Admin/Contents");
     else if (param == "Add") Router.push("/Admin/Add_Content");
@@ -12,12 +18,18 @@ class Admin extends Component {
     }
   }
 
+  async componentDidMount() {
+    const priv = await localStorage.getItem("privilege");
+    this.setState({ priv: priv });
+  }
+
   Logout() {
     localStorage.clear();
     Router.push("/");
   }
 
   render() {
+    const { priv } = this.state;
     return (
       <div className="admin-main-div">
         <div
@@ -32,14 +44,16 @@ class Admin extends Component {
         >
           Manage Contents
         </div>
-        {localStorage.getItem("privilege") == 1 ? (
+        {priv == 1 ? (
           <div
             className="admin-inner-div"
             onClick={() => this.onCLickHandler("AddAdmin")}
           >
             Add Admin
           </div>
-        ) : console.log(localStorage.getItem("privilege"))}
+        ) : (
+          console.log(priv)
+        )}
         <div
           className="admin-inner-div"
           onClick={() => this.onCLickHandler("logout")}
