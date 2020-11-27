@@ -72,76 +72,78 @@ class Header extends Component {
   navBarDesktop() {
     const { activeNav } = this.state;
     return (
-      <div className="header-nav-wrapper">
-        <Link href="/">
-          <a
-            className={`header-nav ${activeNav == "/" ? "active-nav" : ""}`}
-            onClick={() => this.setNav("/")}
-          >
-            HOME
-          </a>
-        </Link>
-        <Link href="/About_Us">
-          <a
-            className={`header-nav ${
-              activeNav == "/About_Us" ? "active-nav" : ""
-            }`}
-            onClick={() => this.setNav("/About_Us")}
-          >
-            ABOUT US
-          </a>
-        </Link>
-        <Link href="/Products">
-          <a
-            className={`header-nav ${
-              activeNav == "/Products" ? "active-nav" : ""
-            }`}
-            onClick={() => this.setNav("/Products")}
-          >
-            PRODUCTS
-          </a>
-        </Link>
-        <Link href="/Research_And_Development">
-          <a
-            className={`header-nav ${
-              activeNav == "/Research_And_Development" ? "active-nav" : ""
-            }`}
-            onClick={() => this.setNav("/Research_And_Development")}
-          >
-            RESEARCH & DEVELOPMENT
-          </a>
-        </Link>
-        <Link href="/History">
-          <a
-            className={`header-nav ${
-              activeNav == "/History" ? "active-nav" : ""
-            }`}
-            onClick={() => this.setNav("/History")}
-          >
-            HISTORY
-          </a>
-        </Link>
-        <Link href="/Training_And_Mentoring">
-          <a
-            className={`header-nav ${
-              activeNav == "/Training_And_Mentoring" ? "active-nav" : ""
-            }`}
-            onClick={() => this.setNav("/Research_And_Development")}
-          >
-            TRAINING & MENTORING
-          </a>
-        </Link>
-        <Link href="/Information_System">
-          <a
-            className={`header-nav ${
-              activeNav == "/Information_System" ? "active-nav" : ""
-            }`}
-            onClick={() => this.setNav("/Information_System")}
-          >
-            INFORMATION SYSTEM
-          </a>
-        </Link>
-      </div>
+      <>
+        <div className="header-nav-wrapper">
+          <Link href="/">
+            <a
+              className={`header-nav ${activeNav == "/" ? "active-nav" : ""}`}
+              onClick={() => this.setNav("/")}
+            >
+              HOME
+            </a>
+          </Link>
+          <Link href="/About_Us">
+            <a
+              className={`header-nav ${
+                activeNav == "/About_Us" ? "active-nav" : ""
+              }`}
+              onClick={() => this.setNav("/About_Us")}
+            >
+              ABOUT US
+            </a>
+          </Link>
+          <Link href="/Products">
+            <a
+              className={`header-nav ${
+                activeNav == "/Products" ? "active-nav" : ""
+              }`}
+              onClick={() => this.setNav("/Products")}
+            >
+              PRODUCTS
+            </a>
+          </Link>
+          <Link href="/Research_And_Development">
+            <a
+              className={`header-nav ${
+                activeNav == "/Research_And_Development" ? "active-nav" : ""
+              }`}
+              onClick={() => this.setNav("/Research_And_Development")}
+            >
+              RESEARCH & DEVELOPMENT
+            </a>
+          </Link>
+          <Link href="/History">
+            <a
+              className={`header-nav ${
+                activeNav == "/History" ? "active-nav" : ""
+              }`}
+              onClick={() => this.setNav("/History")}
+            >
+              HISTORY
+            </a>
+          </Link>
+          <Link href="/Training_And_Mentoring">
+            <a
+              className={`header-nav ${
+                activeNav == "/Training_And_Mentoring" ? "active-nav" : ""
+              }`}
+              onClick={() => this.setNav("/Training_And_Mentoring")}
+            >
+              TRAINING & MENTORING
+            </a>
+          </Link>
+          <Link href="/Information_System">
+            <a
+              className={`header-nav ${
+                activeNav == "/Information_System" ? "active-nav" : ""
+              }`}
+              onClick={() => this.setNav("/Information_System")}
+            >
+              INFORMATION SYSTEM
+            </a>
+          </Link>
+        </div>
+      </>
     );
   }
 

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import ComingSoon from "../../layouts/ComingSoon";
 import Router from "next/router";
+import lock from "../../assets/lock.svg";
+import people from "../../assets/user.png";
 
 class Admin extends Component {
   constructor(props) {
@@ -11,7 +13,15 @@ class Admin extends Component {
     };
     this.login = this.login.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.enterPressed = this.enterPressed.bind(this);
   }
+
+  enterPressed = (event) => {
+    var code = event.keyCode || event.which;
+    if (code === 13) {
+      this.login();
+    }
+  };
 
   async login() {
     await fetch(`http://45.15.24.190:1110/admin_login`, {
@@ -31,18 +41,10 @@ class Admin extends Component {
           await localStorage.setItem("isLogin", responseJson.isLogin);
           await localStorage.setItem("username", responseJson.username);
           await localStorage.setItem("privilege", responseJson.privilege);
-          // this.props.history.push({
-          //     pathname: "/Data",
-          //     state: { status: responseJson.status },
-          // });
           console.log(responseJson, "SUCCESS");
           Router.push("/Admin");
         } else {
           alert("fail login");
-          // await this.setState({
-          //     modaltrigger: true,
-          //     modalstatus: "ID and Password invalid",
-          // });
         }
         console.log(responseJson);
       });
@@ -57,29 +59,43 @@ class Admin extends Component {
       <>
         <div className="LoginContainer">
           <h1>LOGIN</h1>
-          <div className="LoginUsername">
+          <div className="LoginContent">
+            {/* <img
+              style={{ width: "40px", marginRight: "5px" }}
+              src={people}
+            ></img> */}
             <label style={{ marginRight: "1em" }}>
               <b>USERNAME</b>
             </label>
             <input
+              className="LoginInput"
               id="uname"
               type="text"
               value={this.state.username}
               onChange={(e) => this.handleChange("username", e.target.value)}
             ></input>
           </div>
-          <div className="LoginPassword">
+          <div className="LoginContent">
             <label style={{ marginRight: "1em" }}>
               <b>PASSWORD</b>
             </label>
+            {/* <img style={{ width: "40px", marginRight: "5px" }} src={lock}></img> */}
             <input
+              className="LoginInput"
               id="pass"
               type="password"
               value={this.state.password}
               onChange={(e) => this.handleChange("password", e.target.value)}
+              onKeyUp={this.enterPressed}
             ></input>
           </div>
-          <button onClick={this.login}>LOGIN</button>
+          <button
+            className="BtnLogin"
+            style={{ marginBottom: "2em" }}
+            onClick={this.login}
+          >
+            LOGIN
+          </button>
         </div>
       </>
     );
