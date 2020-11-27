@@ -7,7 +7,9 @@ class Admin extends Component {
     if (param == "Edit") Router.push("/Admin/Contents");
     else if (param == "Add") Router.push("/Admin/Add_Content");
     else if (param == "AddAdmin") Router.push("/Admin/Add_Admin");
-    else if (param == "logout") {this.Logout()};
+    else if (param == "logout") {
+      this.Logout();
+    }
   }
 
   Logout() {
@@ -30,12 +32,14 @@ class Admin extends Component {
         >
           Manage Contents
         </div>
-        <div
-          className="admin-inner-div"
-          onClick={() => this.onCLickHandler("AddAdmin")}
-        >
-          Add Admin
-        </div>
+        {localStorage.getItem("privilege") === 1 ? (
+          <div
+            className="admin-inner-div"
+            onClick={() => this.onCLickHandler("AddAdmin")}
+          >
+            Add Admin
+          </div>
+        ) : null}
         <div
           className="admin-inner-div"
           onClick={() => this.onCLickHandler("logout")}
