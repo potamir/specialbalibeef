@@ -22,7 +22,8 @@ const keyMap = {
 
 const handlers = {
   Login: (event) => {
-    Router.push("/Login");
+    if (localStorage.getItem("isLogin")) Router.push("/Admin");
+    else Router.push("/Login");
   },
 };
 export default function MyApp({ Component, pageProps }) {

@@ -420,19 +420,47 @@ body {
   color: #eba95e;
 }
 
-.LoginContainer {
-  margin-top: 5em;
+.AddAdminContainer {
   text-align: center;
+  border: solid;
+  width: 50%;
+  margin: 10% auto;
+  background-color: #df9a4b;
 }
 
-.LoginUsername {
+.LoginContainer {
+  text-align: center;
+  border: solid;
+  width: 300px;
+  margin: 180px auto;
+  background-color: #df9a4b;
+}
+
+.AddAdminContent {
+  margin: 0 auto;
   margin-top: 1em;
   margin-bottom: 1em;
 }
 
-.LoginPassword {
+.LoginContent {
+  margin: 0 auto;
   margin-top: 1em;
   margin-bottom: 1em;
+}
+
+.LoginInput {
+  height: 20px;
+}
+
+.AddAdminGrid {
+  margin: 0 auto;
+}
+
+.BtnLogin {
+  border-radius: 12px;
+  color: #df9a4b;
+  background-color: #222;
+  width: 40%;
 }
 
 .admin-main-div {

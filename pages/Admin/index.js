@@ -6,7 +6,17 @@ class Admin extends Component {
   onCLickHandler(param) {
     if (param == "Edit") Router.push("/Admin/Contents");
     else if (param == "Add") Router.push("/Admin/Add_Content");
+    else if (param == "AddAdmin") Router.push("/Admin/Add_Admin");
+    else if (param == "logout") {
+      this.Logout();
+    }
   }
+
+  Logout() {
+    localStorage.clear();
+    Router.push("/");
+  }
+
   render() {
     return (
       <div className="admin-main-div">
@@ -21,6 +31,20 @@ class Admin extends Component {
           onClick={() => this.onCLickHandler("Edit")}
         >
           Manage Contents
+        </div>
+        {localStorage.getItem("privilege") == 1 ? (
+          <div
+            className="admin-inner-div"
+            onClick={() => this.onCLickHandler("AddAdmin")}
+          >
+            Add Admin
+          </div>
+        ) : console.log(localStorage.getItem("privilege"))}
+        <div
+          className="admin-inner-div"
+          onClick={() => this.onCLickHandler("logout")}
+        >
+          LOG OUT
         </div>
       </div>
     );
