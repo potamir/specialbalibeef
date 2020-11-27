@@ -126,7 +126,7 @@ class Header extends Component {
             className={`header-nav ${
               activeNav == "/Training_And_Mentoring" ? "active-nav" : ""
             }`}
-            onClick={() => this.setNav("/Research_And_Development")}
+            onClick={() => this.setNav("/Training_And_Mentoring")}
           >
             TRAINING & MENTORING
           </a>

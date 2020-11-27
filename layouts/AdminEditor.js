@@ -89,7 +89,7 @@ class AdminEditor extends Component {
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       xhr.open("POST", "https://api.imgur.com/3/image");
-      xhr.setRequestHeader("Authorization", "Client-ID 25153815073b152");
+      xhr.setRequestHeader("Authorization", "Client-ID 8cb0a5164fdf7ec");
       xhr.setRequestHeader("Cache-Control", null);
       xhr.setRequestHeader("X-Requested-With", null);
       const data = new FormData();
