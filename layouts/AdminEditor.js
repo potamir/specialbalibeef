@@ -88,16 +88,22 @@ class AdminEditor extends Component {
     console.log(file);
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
-      xhr.open("POST", "https://api.imgur.com/3/image");
-      xhr.setRequestHeader("Authorization", "Client-ID 8cb0a5164fdf7ec");
-      xhr.setRequestHeader("Cache-Control", null);
-      xhr.setRequestHeader("X-Requested-With", null);
+      xhr.open(
+        "POST",
+        "https://api.cloudinary.com/v1_1/dvc7wsoyw/image/upload"
+      );
       const data = new FormData();
-      data.append("image", file);
+      data.append("file", file);
+      data.append("upload_preset", "specialbalibeef");
       xhr.send(data);
       xhr.addEventListener("load", () => {
         const response = JSON.parse(xhr.responseText);
-        resolve(response);
+        console.log(response.url);
+        resolve({
+          data: {
+            link: response.url,
+          },
+        });
       });
       xhr.addEventListener("error", () => {
         const error = JSON.parse(xhr.responseText);
@@ -122,6 +128,19 @@ class AdminEditor extends Component {
   //       });
   //     };
   //   });
+
+  // uploadImageCallBack = async (files) => {
+  //   console.log(files);
+  //   const data = new FormData();
+  //   data.append("file", files);
+  //   data.append("upload_preset", "specialbalibeef");
+  //   const res = await fetch(
+  //     "upload: https://api.cloudinary.com/v1_1/dvc7wsoyw/image/upload",
+  //     { method: aPOSTa, body: data }
+  //   );
+  //   const file = await res.json();
+  //   console.log(file);
+  // };
 
   async submitHtml() {
     await this.setState({ loading: true });
