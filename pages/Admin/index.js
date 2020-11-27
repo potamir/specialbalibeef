@@ -32,14 +32,14 @@ class Admin extends Component {
         >
           Manage Contents
         </div>
-        {localStorage.getItem("privilege") === 1 ? (
+        {localStorage.getItem("privilege") == 1 ? (
           <div
             className="admin-inner-div"
             onClick={() => this.onCLickHandler("AddAdmin")}
           >
             Add Admin
           </div>
-        ) : null}
+        ) : console.log(localStorage.getItem("privilege"))}
         <div
           className="admin-inner-div"
           onClick={() => this.onCLickHandler("logout")}

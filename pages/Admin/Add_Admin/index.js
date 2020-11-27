@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Router from "next/router";
 
 export class index extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ export class index extends Component {
       document.getElementById("repass").style.backgroundColor = "white";
       var code = event.keyCode || event.which;
       if (code === 13) {
-        console.log("test");
+        this.AddAdmin()
       }
     } else {
       document.getElementById("repass").style.backgroundColor = "red";
@@ -30,8 +31,8 @@ export class index extends Component {
   }
 
   async AddAdmin() {
-    console.log(this.state.username, this.state.password, this.state.privilege);
-    await fetch(`http://45.15.24.190:1010/add_admin`, {
+    console.log(this.state.username)
+    await fetch(`http://45.15.24.190:8080/add_admin`, {
       method: "POST",
       headers: {
         Accept: "application/json",

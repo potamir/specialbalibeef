@@ -24,7 +24,7 @@ class Admin extends Component {
   };
 
   async login() {
-    await fetch(`http://45.15.24.190:1110/admin_login`, {
+    await fetch(`http://45.15.24.190:8080/admin_login`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -41,7 +41,6 @@ class Admin extends Component {
           await localStorage.setItem("isLogin", responseJson.isLogin);
           await localStorage.setItem("username", responseJson.username);
           await localStorage.setItem("privilege", responseJson.privilege);
-          console.log(responseJson, "SUCCESS");
           Router.push("/Admin");
         } else {
           alert("fail login");
