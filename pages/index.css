@@ -466,39 +466,57 @@ body {
 .admin-main-div {
   min-height: 80vh;
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30vw, 1fr));
+  justify-items: center;
 }
 
 .admin-inner-div {
   flex: 1;
   height: 80vh;
+  width: 30vw;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #bbb;
   transition-duration: 0.4s;
   cursor: pointer;
   font-size: 0rem;
   font-weight: bold;
   margin: 1rem;
-  background-image: url("../assets/Manage.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
 }
-.admin-inner-div:nth-child(odd) {
-  background-color: #eba95e;
-  background-image: url("../assets/Add.png");
-}
 .admin-inner-div:hover {
-  background-color: #aaa;
   font-size: 1.6rem;
   color: #fff;
   background-size: 0%;
 }
-.admin-inner-div:nth-child(odd):hover {
+.add-content {
+  background-color: #eba95e;
+  background-image: url("../assets/Add.png");
+}
+.add-content:hover {
   background-color: #df9a4b;
+}
+.edit-content {
+  background-color: #bbb;
+  background-image: url("../assets/Manage.png");
+}
+.edit-content:hover {
+  background-color: #aaa;
+}
+.add-admin {
+  background-color: #2586c7;
+  background-image: url("../assets/addadmin.png");
+}
+.add-admin:hover {
+  background-color: #186ea8;
+}
+.logout {
+  background-color: #db4835;
+  background-image: url("../assets/logout.png");
+}
+.logout:hover {
+  background-color: #ce3c29;
 }

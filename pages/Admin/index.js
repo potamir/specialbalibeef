@@ -33,20 +33,20 @@ class Admin extends Component {
     return (
       <div className="admin-main-div">
         <div
-          className="admin-inner-div"
+          className="admin-inner-div add-content"
           onClick={() => this.onCLickHandler("Add")}
         >
           Add New Content
         </div>
         <div
-          className="admin-inner-div"
+          className="admin-inner-div edit-content"
           onClick={() => this.onCLickHandler("Edit")}
         >
           Manage Contents
         </div>
         {priv == 1 ? (
           <div
-            className="admin-inner-div"
+            className="admin-inner-div add-admin"
             onClick={() => this.onCLickHandler("AddAdmin")}
           >
             Add Admin
@@ -55,7 +55,7 @@ class Admin extends Component {
           console.log(priv)
         )}
         <div
-          className="admin-inner-div"
+          className="admin-inner-div logout"
           onClick={() => this.onCLickHandler("logout")}
         >
           LOG OUT
