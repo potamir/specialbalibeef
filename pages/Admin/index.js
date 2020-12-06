@@ -13,6 +13,7 @@ class Admin extends Component {
     if (param == "Edit") Router.push("/Admin/Contents");
     else if (param == "Add") Router.push("/Admin/Add_Content");
     else if (param == "AddAdmin") Router.push("/Admin/Add_Admin");
+    else if (param == "ManageAdmin") Router.push("/Admin/Manage_Admin");
     else if (param == "logout") {
       this.Logout();
     }
@@ -45,15 +46,23 @@ class Admin extends Component {
           Manage Contents
         </div>
         {priv == 1 ? (
-          <div
-            className="admin-inner-div add-admin"
-            onClick={() => this.onCLickHandler("AddAdmin")}
-          >
-            Add Admin
+          <>
+            <div
+              className="admin-inner-div add-admin"
+              onClick={() => this.onCLickHandler("AddAdmin")}
+            >
+              Add Admin
           </div>
+            <div
+              className="admin-inner-div add-admin"
+              onClick={() => this.onCLickHandler("ManageAdmin")}
+            >
+              Manage Admin
+        </div>
+          </>
         ) : (
-          console.log(priv)
-        )}
+            console.log(priv)
+          )}
         <div
           className="admin-inner-div logout"
           onClick={() => this.onCLickHandler("logout")}

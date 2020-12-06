@@ -520,3 +520,31 @@ body {
 .logout:hover {
   background-color: #ce3c29;
 }
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.ManageAdminTableContainer {
+
+}
+
+.ManageAdminInput {
+  width: 100%;
+  box-sizing: border-box;
+}
