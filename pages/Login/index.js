@@ -10,6 +10,7 @@ class Admin extends Component {
     this.state = {
       username: "",
       password: "",
+      openModal: false,
     };
     this.login = this.login.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -43,9 +44,8 @@ class Admin extends Component {
           await localStorage.setItem("privilege", responseJson.privilege);
           Router.push("/Admin");
         } else {
-          alert("fail login");
+          await this.setState({ openModal: true });
         }
-        console.log(responseJson);
       });
   }
 
@@ -56,6 +56,38 @@ class Admin extends Component {
   render() {
     return (
       <>
+        {/* modal */}
+        {this.state.openModal ? (
+          <div className="modalContainer">
+            <div className="modalContent">
+              <div className="modalHeader">
+                <span
+                  className="close"
+                  onClick={async (e) =>
+                    await this.setState({ openModal: false })
+                  }
+                >
+                  &times;
+                </span>
+                <h2>Warning</h2>
+              </div>
+              <div className="modalBody">
+                <p>Wrong login username or password</p>
+              </div>
+              <div className="modalFooter">
+                <button
+                  className="modalOKButton"
+                  onClick={async (e) =>
+                    await this.setState({ openModal: false })
+                  }
+                >
+                  OK
+                </button>
+              </div>
+            </div>
+          </div>
+        ) : null}
+
         <div className="LoginContainer">
           <h1>LOGIN</h1>
           <div className="LoginContent">
