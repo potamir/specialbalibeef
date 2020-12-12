@@ -11,7 +11,9 @@
   "dependencies": {
     "draft-js": "^0.11.7",
     "draft-js-custom-styles": "^2.1.1",
+    "draft-js-plugins-editor": "^3.0.0",
     "draft-js-raw-content-state": "^1.2.7",
+    "draft-js-video-plugin": "^2.0.2",
     "draftjs-to-html": "^0.9.1",
     "html-parse-stringify": "^2.0.0",
     "html-react-parser": "^0.14.1",

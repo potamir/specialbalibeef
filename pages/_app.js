@@ -12,6 +12,7 @@ import "../helpers/placeholders.css";
 import "../helpers/button.css";
 import "../helpers/listitems.css";
 import "../helpers/admineditor.css";
+import "../helpers/pagination.css";
 import { HotKeys } from "react-hotkeys";
 import Router from "next/router";
 import Link from "next/link";

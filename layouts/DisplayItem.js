@@ -20,6 +20,7 @@ class DisplayItem extends Component {
       html: "",
       htmlToDraft: "",
       _768: { matches: false },
+      title: "",
     };
     this.getPaymentPage = this.getPaymentPage.bind(this);
     this.mediaQueryChanged = this.mediaQueryChanged.bind(this);
@@ -67,8 +68,7 @@ class DisplayItem extends Component {
     console.log(_768);
     let newHtml = html[id].HTML;
     console.log(newHtml);
-    if (_768.matches)
-      newHtml = await this.changeImgStyle(html[id].HTML);
+    if (_768.matches) newHtml = await this.changeImgStyle(html[id].HTML);
     import(`html-to-draftjs`).then(async (module) => {
       const htmlToDraft = module.default;
       const blocksFromHtml = htmlToDraft(newHtml);
@@ -80,22 +80,25 @@ class DisplayItem extends Component {
       const editorState = EditorState.createWithContent(contentState);
       await this.setState({
         html: editorState,
+        title: html[id].TITLE,
       });
     });
   }
 
   render() {
-    console.log("====>>>>",this.props);
-    const { _768 } = this.state;
+    console.log("====>>>>", this.props);
+    const { _768, html, title } = this.state;
     const StyledWrapper = _768.matches
       ? this.mobileDisplay()
       : this.pcDisplay();
     return (
       <StyledWrapper>
         <div className="display-product" id="content">
+          <div className="article-desc">TITLE: {title}</div>
+          {/*<div className="article-desc">AUTHOR: aaa</div>*/}
           <Editor
             readOnly
-            editorState={this.state.html}
+            editorState={html}
             toolbarClassName="toolbarClassName"
             wrapperClassName="wrapperClassName"
             editorClassName="editorClassName additonalDisp"

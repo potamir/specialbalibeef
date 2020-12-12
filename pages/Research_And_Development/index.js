@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import DisplayItem from "../../layouts/DisplayItem";
 import ListItems from "../../layouts/ListItems";
+import Pagination from "../../layouts/Pagination";
 import { withRouter } from "next/router";
 
 class ResearchAndDevelopment extends Component {
@@ -9,12 +10,14 @@ class ResearchAndDevelopment extends Component {
     this.state = {
       html: "",
       id: null,
+      active: 1,
     };
     this.getContents = this.getContents.bind(this);
     this.setId = this.setId.bind(this);
+    this.paginationSelect = this.paginationSelect.bind(this);
   }
   componentDidMount() {
-    this.getContents();
+    this.getContents(0, 9);
   }
   componentDidUpdate() {
     const { id } = this.state;
@@ -28,7 +31,7 @@ class ResearchAndDevelopment extends Component {
     }
     console.log("======>>>", window.location.href.split("id=")[1]);
   }
-  async getContents() {
+  async getContents(from, to) {
     await fetch(`http://45.15.24.190:1010/admin_html_get`, {
       method: "POST",
       headers: {
@@ -36,8 +39,8 @@ class ResearchAndDevelopment extends Component {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: 0,
-        to: 9,
+        from: from,
+        to: to,
         tableName: "ADMIN_RND",
       }),
     })
@@ -49,8 +52,14 @@ class ResearchAndDevelopment extends Component {
   async setId(param) {
     await this.setState({ id: param });
   }
+  async paginationSelect(active) {
+    const to = active * 9;
+    const from = to - 9;
+    this.setState({ active: active });
+    this.getContents(from, to);
+  }
   render() {
-    const { html, id } = this.state;
+    const { html, id, active } = this.state;
     console.log(this.state);
     return (
       <>
@@ -64,12 +73,19 @@ class ResearchAndDevelopment extends Component {
                 page={"RND"}
               />
             ) : (
-              <ListItems
-                html={html}
-                setId={this.setId}
-                comName={"Research_And_Development"}
-                page={"RND"}
-              />
+              <>
+                <ListItems
+                  html={html}
+                  setId={this.setId}
+                  comName={"Research_And_Development"}
+                  page={"RND"}
+                />
+                <Pagination
+                  totalRows={html[0].TOTAL_ROWS}
+                  paginationSelect={this.paginationSelect}
+                  active={active}
+                />
+              </>
             )}
           </>
         ) : null}

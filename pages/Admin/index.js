@@ -54,7 +54,7 @@ class Admin extends Component {
               Add Admin
           </div>
             <div
-              className="admin-inner-div add-admin"
+              className="admin-inner-div manage-admin"
               onClick={() => this.onCLickHandler("ManageAdmin")}
             >
               Manage Admin

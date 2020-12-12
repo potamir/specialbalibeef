@@ -5,12 +5,13 @@ import Placeholders from "./Placeholders";
 import * as draftToHtml from "draftjs-to-html";
 import Router, { withRouter } from "next/router";
 import * as CONSTANT from "../helpers/constant";
+import createVideoPlugin from "draft-js-video-plugin";
 
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
   { ssr: false }
 );
-
+const videoPlugin = createVideoPlugin();
 class AdminEditor extends Component {
   constructor(props) {
     super(props);
@@ -204,6 +205,7 @@ class AdminEditor extends Component {
 
   render() {
     const { editorState, title, status } = this.state;
+    console.log(videoPlugin.addVideo);
     return (
       <div className="admin-editor-main-div">
         <div className="admin-editor-inner-div">

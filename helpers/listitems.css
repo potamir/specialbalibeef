@@ -46,14 +46,14 @@
   border-color: #999;
 }
 .list-item-image-div {
-  height: 200px;
-  width: 200px;
+  height: auto;
+  width: 10em;
   display: flex;
   justify-content: center;
   align-items: flex-start;
 }
 .list-item-image {
-  width: 200px;
+  width: 10em;
   height: auto;
 }
 .list-item-content {
