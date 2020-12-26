@@ -338,6 +338,7 @@ body {
   transition-duration: 0.4s;
   cursor: default;
   font-size: 2rem;
+  user-select: none;
 }
 .homepage-welcome-div:hover {
   background-image: url("../assets/ctestt2.png");
@@ -413,6 +414,7 @@ body {
   transition-duration: 0.4s;
   cursor: default;
   font-size: 2rem;
+  user-select: none;
 }
 .homepage-more-div:hover {
   background-image: url("../assets/c2.png");

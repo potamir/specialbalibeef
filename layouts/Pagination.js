@@ -6,7 +6,7 @@ class Pagination extends Component {
   }
   render() {
     const { totalRows, paginationSelect, active } = this.props;
-    const rowsEachPage = Math.ceil(totalRows / 2);
+    const rowsEachPage = Math.ceil(totalRows / 9);
     const rows = Array.from(Array(rowsEachPage + 1).keys());
     console.log(rows);
     return (
@@ -16,10 +16,7 @@ class Pagination extends Component {
           {rows.splice(1, rows.length).map((value, index) => {
             const activePag = active == value ? "active" : "";
             return (
-              <a
-                class={`${activePag}`}
-                onClick={() => paginationSelect(value)}
-              >
+              <a class={`${activePag}`} onClick={() => paginationSelect(value)}>
                 {value}
               </a>
             );

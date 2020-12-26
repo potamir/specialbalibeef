@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ListItems from "../../../layouts/ListItems";
 import Select from "react-select";
 import * as CONSTANT from "../../../helpers/constant";
+import Loading from "../../../layouts/Loading";
 
 const options = [
   { value: "RND", label: "Reserch & Development" },
@@ -18,6 +19,7 @@ class AdminContents extends Component {
       loading: false,
       html: "",
       id: "",
+      loading: false,
       selectedOption: { value: "RND", label: "Reserch & Development" },
     };
     this.getContents = this.getContents.bind(this);
@@ -33,6 +35,7 @@ class AdminContents extends Component {
   }
   async getContents() {
     const { selectedOption } = this.state;
+    await this.setState({ loading: true });
     await fetch(`http://45.15.24.190:1010/admin_html_get`, {
       method: "POST",
       headers: {
@@ -47,13 +50,14 @@ class AdminContents extends Component {
     })
       .then((response) => response.json())
       .then(async (responseJson) => {
-        await this.setState({ html: responseJson });
+        await this.setState({ html: responseJson, loading: false });
       });
   }
 
   async deleteContent(id) {
     const { selectedOption } = this.state;
     console.log("abc", selectedOption, id);
+    await this.setState({ loading: true });
     await fetch(`http://45.15.24.190:1010/admin_html_delete`, {
       method: "POST",
       headers: {
@@ -71,6 +75,7 @@ class AdminContents extends Component {
           this.getContents();
         } else {
           alert("fail");
+          this.setState({ loading: false });
           console.log(status);
         }
       });
@@ -81,9 +86,10 @@ class AdminContents extends Component {
   };
 
   render() {
-    const { html, id, selectedOption } = this.state;
+    const { html, id, selectedOption, loading } = this.state;
     return (
       <>
+        <Loading Loading={loading} />
         <div>
           <Select
             value={selectedOption}

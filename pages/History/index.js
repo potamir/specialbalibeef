@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import DisplayItem from "../../layouts/DisplayItem";
 import ListItems from "../../layouts/ListItems";
 import Pagination from "../../layouts/Pagination";
+import Loading from "../../layouts/Loading";
 import { withRouter } from "next/router";
 
 class History extends Component {
@@ -11,6 +12,7 @@ class History extends Component {
       html: "",
       id: null,
       active: 1,
+      loading: false,
     };
     this.getContents = this.getContents.bind(this);
     this.setId = this.setId.bind(this);
@@ -32,6 +34,7 @@ class History extends Component {
     console.log("======>>>", window.location.href.split("id=")[1]);
   }
   async getContents(from, to) {
+    this.setState({ loading: true });
     await fetch(`http://45.15.24.190:1010/admin_html_get`, {
       method: "POST",
       headers: {
@@ -46,7 +49,7 @@ class History extends Component {
     })
       .then((response) => response.json())
       .then(async (responseJson) => {
-        await this.setState({ html: responseJson });
+        await this.setState({ html: responseJson, loading: false });
       });
   }
   async setId(param) {
@@ -60,10 +63,11 @@ class History extends Component {
     this.getContents(from, to);
   }
   render() {
-    const { html, id, active } = this.state;
+    const { html, id, active, loading } = this.state;
     console.log(this.state);
     return (
       <>
+        <Loading Loading={loading} />
         {html != "" ? (
           <>
             {id != null ? (

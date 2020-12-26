@@ -6,6 +6,7 @@ import * as draftToHtml from "draftjs-to-html";
 import Router, { withRouter } from "next/router";
 import * as CONSTANT from "../helpers/constant";
 import createVideoPlugin from "draft-js-video-plugin";
+import Loading from "./Loading";
 
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
@@ -22,6 +23,7 @@ class AdminEditor extends Component {
       title: "",
       id: "",
       page: "",
+      loading: false,
     };
     this.onEditorStateChange = this.onEditorStateChange.bind(this);
     this.submitHtml = this.submitHtml.bind(this);
@@ -56,6 +58,7 @@ class AdminEditor extends Component {
 
   async getContents(index, page) {
     console.log(page);
+    await this.setState({ loading: true });
     await fetch(`http://45.15.24.190:1010/admin_html_get`, {
       method: "POST",
       headers: {
@@ -81,7 +84,7 @@ class AdminEditor extends Component {
           const editorState = EditorState.createWithContent(contentState);
           this.onEditorStateChange(editorState);
         });
-        this.setState({ title: responseJson[0].TITLE });
+        this.setState({ title: responseJson[0].TITLE, loading: false });
       });
   }
 
@@ -162,7 +165,7 @@ class AdminEditor extends Component {
       .then((response) => response.json())
       .then(async (responseJson) => {
         if (responseJson.status === "success") {
-          Router.push("/Products");
+          Router.push("/Admin/Contents");
           this.setState({ loading: false });
         } else {
           alert("fail");
@@ -190,7 +193,7 @@ class AdminEditor extends Component {
       .then((response) => response.json())
       .then(async (responseJson) => {
         if (responseJson.status === "success") {
-          Router.push("/Products");
+          Router.push("/Admin/Contents");
           this.setState({ loading: false });
         } else {
           alert("fail");
@@ -204,56 +207,59 @@ class AdminEditor extends Component {
   }
 
   render() {
-    const { editorState, title, status } = this.state;
+    const { editorState, title, status, loading } = this.state;
     console.log(videoPlugin.addVideo);
     return (
-      <div className="admin-editor-main-div">
-        <div className="admin-editor-inner-div">
-          <div className="admin-editor-title-div">
-            <label for="title" className="admin-editor-title">
-              Title:
-            </label>
-            <input
-              type="text"
-              id="title"
-              name="title"
-              className="admin-editor-input"
-              maxlength="60"
-              value={title}
-              onChange={(e) => this.titleHandler(e)}
-            />
+      <>
+        <Loading Loading={loading} />
+        <div className="admin-editor-main-div">
+          <div className="admin-editor-inner-div">
+            <div className="admin-editor-title-div">
+              <label for="title" className="admin-editor-title">
+                Title:
+              </label>
+              <input
+                type="text"
+                id="title"
+                name="title"
+                className="admin-editor-input"
+                maxlength="60"
+                value={title}
+                onChange={(e) => this.titleHandler(e)}
+              />
+            </div>
+            <div className="admin-editor-div">
+              <Editor
+                editorState={this.state.editorState}
+                toolbarClassName="toolbarClassName"
+                wrapperClassName="wrapperClassName"
+                editorClassName="editorClassName additionalEditor"
+                onEditorStateChange={this.onEditorStateChange}
+                toolbar={{
+                  image: {
+                    urlEnabled: false,
+                    uploadEnabled: true,
+                    alignmentEnabled: true, // Whether to display the arrange button is equivalent to text-align
+                    uploadCallback: this.uploadImageCallBack,
+                    previewImage: true,
+                    inputAccept: "image/*",
+                    alt: { present: false, mandatory: false },
+                  },
+                }}
+                // toolbarCustomButtons={[<Placeholders />]}
+              />
+            </div>
           </div>
-          <div className="admin-editor-div">
-            <Editor
-              editorState={this.state.editorState}
-              toolbarClassName="toolbarClassName"
-              wrapperClassName="wrapperClassName"
-              editorClassName="editorClassName additionalEditor"
-              onEditorStateChange={this.onEditorStateChange}
-              toolbar={{
-                image: {
-                  urlEnabled: false,
-                  uploadEnabled: true,
-                  alignmentEnabled: true, // Whether to display the arrange button is equivalent to text-align
-                  uploadCallback: this.uploadImageCallBack,
-                  previewImage: true,
-                  inputAccept: "image/*",
-                  alt: { present: false, mandatory: false },
-                },
-              }}
-              // toolbarCustomButtons={[<Placeholders />]}
-            />
+          <div className="admin-editor-button-div">
+            <button
+              onClick={() => (status ? this.editHtml() : this.submitHtml())}
+              className="admin-editor-button"
+            >
+              Submit Changes
+            </button>
           </div>
         </div>
-        <div className="admin-editor-button-div">
-          <button
-            onClick={() => (status ? this.editHtml() : this.submitHtml())}
-            className="admin-editor-button"
-          >
-            Submit Changes
-          </button>
-        </div>
-      </div>
+      </>
     );
   }
 }
