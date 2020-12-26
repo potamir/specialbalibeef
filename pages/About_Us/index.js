@@ -7,11 +7,11 @@ class About_Us extends Component {
       <div className="content-page contact-main-div">
         <div className="contact-content-div">
           <div className="contact-content-title">
-            Hello! Ada yang bisa saya bantu?
+            TITLE
           </div>
           <div className="contact-content">{content}</div>
           <div className="contact-content-footer">
-            Terima Kasih sudah berkunjung.
+            FOOTER
           </div>
         </div>
         <div className="contact-form-div">
@@ -57,4 +57,4 @@ class About_Us extends Component {
 export default About_Us;
 
 const content =
-  "Isi formulir ini dengan lengkap dan benar untuk menghubungi saya. Anda juga bisa berkunjung langsung ke kantor saya yang beralamat di Jl. Kalumpang, RT002/RW004, Kel. Vi Suku, Kota Solok, Sumatera Barat. Setelah anda mensubmit formulir, saya akan segera menghubungi anda kekontak yang sudah anda berikan.";
+  "CONTENT";
