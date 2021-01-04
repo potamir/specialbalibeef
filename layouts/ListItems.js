@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Link from "next/link";
 import Router from "next/router";
+import * as CONSTANT from "../helpers/constant";
 
 class ListItems extends Component {
   constructor(props) {
@@ -21,7 +22,17 @@ class ListItems extends Component {
     });
   }
   render() {
-    const { html, setId, comName, admin, deleteContent } = this.props;
+    const {
+      html,
+      setId,
+      comName,
+      admin,
+      deleteContent,
+      highlightItem,
+      highlightItem_data,
+      page,
+    } = this.props;
+    console.log(CONSTANT.TABLE_LIST[page]);
     return (
       <div className="list-item-main-div">
         <div className="list-item-inner-div">
@@ -43,6 +54,19 @@ class ListItems extends Component {
             if (newDisContent != "")
               finalCont = newDisContent.substring(0, 100) + "...";
             else finalCont = "no Desc";
+            let highlighted = false;
+            if (highlightItem_data) {
+              if (
+                highlightItem_data[0].ITEM_TABLE == CONSTANT.TABLE_LIST[page] &&
+                highlightItem_data[0].ITEM_ID == value.ID
+              )
+                highlighted = true;
+              else if (
+                highlightItem_data[1].ITEM_TABLE == CONSTANT.TABLE_LIST[page] &&
+                highlightItem_data[1].ITEM_ID == value.ID
+              )
+                highlighted = true;
+            }
             return (
               <div className="list-item-wrapper" onClick={() => setId(index)}>
                 <div className="list-item-title">
@@ -54,26 +78,36 @@ class ListItems extends Component {
                 <div className="list-item-content"> {finalCont} </div>
                 {comName == "Admin/Contents/Edit" ? (
                   <div className="list-item-choose">
+                    {highlighted ? (
+                      <div className="list-item-highlighted">Highlighted</div>
+                    ) : (
+                      <div
+                        className="list-item-choose-button list-item-highlight-button"
+                        onClick={() => highlightItem(value.ID)}
+                      >
+                        Highlight
+                      </div>
+                    )}
                     <div
-                      className="list-item-choose-button"
-                      onClick={() => deleteContent(value.ID)}
-                    >
-                      Delete
-                    </div>
-                    <div
-                      className="list-item-choose-button"
+                      className="list-item-choose-button list-item-edit-button"
                       onClick={() =>
-                        this.nextRouteHandler(comName, index, value, true)
+                        this.nextRouteHandler(comName, value.ID, value, true)
                       }
                     >
                       Edit
+                    </div>
+                    <div
+                      className="list-item-choose-button list-item-delete-button"
+                      onClick={() => deleteContent(value.ID)}
+                    >
+                      Delete
                     </div>
                   </div>
                 ) : (
                   <div
                     className="read-more"
                     onClick={() =>
-                      this.nextRouteHandler(comName, index, value, false)
+                      this.nextRouteHandler(comName, value.ID, value, false)
                     }
                   >
                     Read More >>

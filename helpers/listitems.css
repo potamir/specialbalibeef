@@ -23,8 +23,8 @@
   background-color: #eba95e;
   cursor: default;
   border-style: solid;
-  border-width: 1px;
-  border-color: rgb(197, 197, 197);
+  border-width: 3px;
+  border-color: rgb(51, 51, 51);
   border-radius: 1rem;
 }
 .list-item-wrapper:nth-child(even) {
@@ -38,23 +38,24 @@
 }
 .list-item-title {
   font-size: 1;
+  font-weight: bold;
   width: 100%;
   margin-bottom: 0.5rem;
   text-align: center;
   border-style: solid;
-  border-width: 0px 0px 1px 0px;
-  border-color: #999;
+  border-width: 0px 0px 2px 0px;
+  border-color: rgb(51, 51, 51);
 }
 .list-item-image-div {
-  height: auto;
+  height: 10em;
   width: 10em;
   display: flex;
   justify-content: center;
   align-items: flex-start;
 }
 .list-item-image {
-  width: 10em;
-  height: auto;
+  width: auto;
+  height: 100%;
 }
 .list-item-content {
   font-size: 0.9rem;
@@ -62,7 +63,7 @@
   padding: 0.5rem 2rem 0.5rem 2rem;
 }
 .read-more {
-  flex: 2;
+  bottom: 1.2rem;
   font-size: 1.1rem;
   transition-duration: 0.4s;
   padding: 0.5rem;
@@ -89,7 +90,7 @@
 .list-item-choose-button {
   flex: 1;
   height: 100%;
-  font-size: 1.1rem;
+  font-size: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -100,24 +101,42 @@
   margin: 0.3rem;
   transition-duration: 0.4s;
   cursor: pointer;
-  background-image: url("../assets/delete.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 50%;
   color: transparent;
   border-color: transparent;
 }
-.list-item-choose-button:nth-child(even) {
+.list-item-highlight-button {
+  background-image: url("../assets/highlight.png");
+}
+.list-item-delete-button {
+  background-image: url("../assets/delete.png");
+}
+.list-item-edit-button {
   background-image: url("../assets/edit.png");
 }
-.list-item-choose-button:hover {
+.list-item-highlight-button:hover {
+  background-color: #16b345;
+  color: #111;
+  border-color: #16b345;
+  background-size: 0%;
+}
+.list-item-delete-button:hover {
   background-color: #e23535;
   color: #111;
   border-color: #e23535;
   background-size: 0%;
 }
-.list-item-choose-button:nth-child(even):hover {
+.list-item-edit-button:hover {
   background-color: #4242d6;
   color: #111;
   border-color: #4242d6;
+  background-size: 0%;
+}
+.list-item-highlighted {
+  padding: 10px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #0c7c2e;
 }

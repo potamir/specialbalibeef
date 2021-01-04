@@ -395,9 +395,15 @@ body {
   text-align: justify;
 }
 .highlight-content-img {
-  flex: 4;
-  background-color: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 90%;
+  height: 600px;
+}
+.highlight-img {
+  width: auto;
+  height: 100%;
 }
 
 .homepage-more-div {

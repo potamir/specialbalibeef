@@ -21,14 +21,17 @@ class AdminContents extends Component {
       id: "",
       loading: false,
       selectedOption: { value: "RND", label: "Reserch & Development" },
+      highlightItem_data: "",
     };
     this.getContents = this.getContents.bind(this);
     this.deleteContent = this.deleteContent.bind(this);
+    this.highlightItem = this.highlightItem.bind(this);
     this.setId = this.setId.bind(this);
   }
 
   async componentDidMount() {
     await this.getContents();
+    await this.getHighlightItem();
   }
   async setId(param) {
     await this.setState({ id: param });
@@ -80,13 +83,63 @@ class AdminContents extends Component {
         }
       });
   }
+  async highlightItem(id) {
+    const { selectedOption } = this.state;
+    await this.setState({ loading: true });
+    await fetch(`http://45.15.24.190:1010/admin_highlight`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        tableName: CONSTANT.TABLE_LIST[selectedOption.value],
+        id: id,
+      }),
+    })
+      .then((response) => response.json())
+      .then(async (responseJson) => {
+        if (responseJson.status === "success") {
+          this.setState({ loading: false });
+        } else {
+          alert("fail");
+          this.setState({ loading: false });
+        }
+      });
+  }
+
+  async getHighlightItem() {
+    await this.setState({ loading: true });
+    await fetch(`http://45.15.24.190:1010/admin_highlight_get`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then(async (responseJson) => {
+        if (responseJson) {
+          this.setState({ loading: false, highlightItem_data: responseJson });
+        } else {
+          alert("fail");
+          this.setState({ loading: false });
+        }
+      });
+  }
 
   handleChange = (selectedOption) => {
     this.setState({ selectedOption }, () => this.getContents());
   };
 
   render() {
-    const { html, id, selectedOption, loading } = this.state;
+    const {
+      html,
+      id,
+      selectedOption,
+      loading,
+      highlightItem_data,
+    } = this.state;
     return (
       <>
         <Loading Loading={loading} />
@@ -104,6 +157,8 @@ class AdminContents extends Component {
             comName={"Admin/Contents/Edit"}
             page={selectedOption.value}
             deleteContent={this.deleteContent}
+            highlightItem={this.highlightItem}
+            highlightItem_data={highlightItem_data}
           />
         ) : null}
       </>
