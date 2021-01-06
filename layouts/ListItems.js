@@ -91,7 +91,7 @@ class ListItems extends Component {
                     <div
                       className="list-item-choose-button list-item-edit-button"
                       onClick={() =>
-                        this.nextRouteHandler(comName, value.ID, value, true)
+                        this.nextRouteHandler(comName, index, value, true)
                       }
                     >
                       Edit
@@ -107,7 +107,7 @@ class ListItems extends Component {
                   <div
                     className="read-more"
                     onClick={() =>
-                      this.nextRouteHandler(comName, value.ID, value, false)
+                      this.nextRouteHandler(comName, index, value, false)
                     }
                   >
                     Read More >>
