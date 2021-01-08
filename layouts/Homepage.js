@@ -107,9 +107,7 @@ class About_Us extends Component {
         <Loading Loading={loading} />
         <div className="homepage-main-div">
           <div className="homepage-welcome-div">
-            <h1 className="homepage-welcome-font">
-              Welcome to Special Bali Beef
-            </h1>
+            <h1 className="homepage-welcome-font">Special Bali Beef</h1>
           </div>
           <div className="highlight-main-div">
             <div className="highlight-inner-div">

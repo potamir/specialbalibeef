@@ -371,7 +371,7 @@ body {
   flex-direction: column;
   background-color: #666;
   border-style: solid;
-  border-width: 1px;
+  border-width: 3px;
 }
 .highlight-content:nth-last-child(odd) {
   background-color: #eba95e;
