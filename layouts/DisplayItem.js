@@ -64,11 +64,12 @@ class DisplayItem extends Component {
 
   async getPaymentPage() {
     const { _768 } = this.state;
-    const { html, id } = this.props;
+    const { html, id, title } = this.props;
     console.log(_768);
-    let newHtml = html[id].HTML;
+    let newHtml = id ? html[id].HTML : html;
     console.log(newHtml);
-    if (_768.matches) newHtml = await this.changeImgStyle(html[id].HTML);
+    if (_768.matches)
+      newHtml = await this.changeImgStyle(id ? html[id].HTML : html);
     import(`html-to-draftjs`).then(async (module) => {
       const htmlToDraft = module.default;
       const blocksFromHtml = htmlToDraft(newHtml);
@@ -80,7 +81,7 @@ class DisplayItem extends Component {
       const editorState = EditorState.createWithContent(contentState);
       await this.setState({
         html: editorState,
-        title: html[id].TITLE,
+        title: id ? html[id].TITLE : title,
       });
     });
   }
@@ -88,12 +89,16 @@ class DisplayItem extends Component {
   render() {
     console.log("====>>>>", this.props);
     const { _768, html, title } = this.state;
+    const { id } = this.props;
     const StyledWrapper = _768.matches
       ? this.mobileDisplay()
       : this.pcDisplay();
     return (
       <StyledWrapper>
-        <div className="display-product" id="content">
+        <div
+          className={`display-product ${id ? null : "display-product-preview"}`}
+          id="content"
+        >
           <div className="article-desc">TITLE: {title}</div>
           {/*<div className="article-desc">AUTHOR: aaa</div>*/}
           <Editor

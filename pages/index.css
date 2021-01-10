@@ -8,6 +8,7 @@ body {
 }
 
 .header-wrapper {
+  user-select: none;
   background-color: #222;
   display: flex;
   flex-direction: row;
@@ -654,4 +655,28 @@ tr:nth-child(even) {
   height: 30px;
   float: right;
   cursor: pointer;
+}
+
+.total-visitor {
+  user-select: none;
+  background-color: #ddd;
+  transition-duration: 0.4s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  right: 0;
+  font-size: 0px;
+  height: 100px;
+  position: fixed;
+  width: 15px;
+  border-top-left-radius: 20%;
+  border-bottom-left-radius: 20%;
+}
+
+.total-visitor:hover {
+  background-color: #222;
+  width: 150px;
+  font-size: 0.8rem;
+  color: #ddd;
 }

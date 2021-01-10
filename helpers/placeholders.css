@@ -6,11 +6,15 @@
 }
 .display-product {
   padding: 1rem;
-  border-style: solid;
+  border-style: dashed;
   border-width: 2px;
+  border-radius: 1rem;
   border-color: #999;
-  background-color: #efefef;
+  background-color: #fff;
   margin: 5px;
+}
+.display-product-preview {
+  width: calc(100vw - 80px);
 }
 
 .article-desc {

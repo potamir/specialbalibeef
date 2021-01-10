@@ -1,7 +1,7 @@
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 999; /* Sit on top */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -16,6 +16,9 @@
   user-select: none;
 }
 
+.preview-modal {
+}
+
 /* Modal Content */
 .modal-content {
   position: fixed;
@@ -27,6 +30,13 @@
   -webkit-animation-duration: 0.4s;
   animation-name: slideIn;
   animation-duration: 0.4s;
+}
+
+.preview-modal-content {
+  position: relative;
+  background-color: #252525fa;
+  width: 100%;
+  height: 100%;
 }
 
 /* The Close Button */
@@ -60,6 +70,14 @@
   height: 100%;
   justify-content: flex-start;
   align-items: flex-start;
+}
+
+.preview-modal-body {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-footer {

@@ -11,9 +11,11 @@ class About_Us extends Component {
       loading: true,
       highlightItem_data: "",
       highlightedItem: "",
+      totalVisitor: 0,
     };
   }
   async componentDidMount() {
+    this.getVisitor();
     await this.getHighlightItem();
     const { highlightItem_data } = this.state;
     for (let i = 0; i < 2; i++) {
@@ -70,7 +72,20 @@ class About_Us extends Component {
         }
       });
   }
-
+  async getVisitor() {
+    await fetch(`http://45.15.24.190:1012/get_visitor`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then(async (responseJson) => {
+        const totalVisitor = responseJson[0] ? responseJson[0].TOTAL : 0;
+        this.setState({ totalVisitor: totalVisitor });
+      });
+  }
   nextRouteHandler(comName, index, value, status) {
     const { page } = this.props;
     Router.push({
@@ -79,7 +94,12 @@ class About_Us extends Component {
   }
 
   render() {
-    const { loading, highlightedItem, highlightItem_data } = this.state;
+    const {
+      loading,
+      highlightedItem,
+      highlightItem_data,
+      totalVisitor,
+    } = this.state;
     let finalCont = [];
     for (let i = 0; i < 2; i++) {
       if (highlightedItem[i]) {
@@ -104,6 +124,7 @@ class About_Us extends Component {
     console.log(highlightedItem, highlightItem_data);
     return (
       <>
+        <div className="total-visitor">Visitor Today: {totalVisitor}</div>
         <Loading Loading={loading} />
         <div className="homepage-main-div">
           <div className="homepage-welcome-div">

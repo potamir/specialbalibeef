@@ -7,6 +7,7 @@ import Router, { withRouter } from "next/router";
 import * as CONSTANT from "../helpers/constant";
 import createVideoPlugin from "draft-js-video-plugin";
 import Loading from "./Loading";
+import Preview from "./Preview";
 
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
@@ -24,11 +25,13 @@ class AdminEditor extends Component {
       id: "",
       page: "",
       loading: false,
+      preview: false,
     };
     this.onEditorStateChange = this.onEditorStateChange.bind(this);
     this.submitHtml = this.submitHtml.bind(this);
     this.editHtml = this.editHtml.bind(this);
     this.titleHandler = this.titleHandler.bind(this);
+    this.previewHandler = this.previewHandler.bind(this);
     // this.getPaymentPage = this.getPaymentPage.bind(this);
   }
 
@@ -206,12 +209,23 @@ class AdminEditor extends Component {
     this.setState({ title: e.target.value });
   }
 
+  previewHandler() {
+    this.setState({ preview: false });
+  }
+
   render() {
-    const { editorState, title, status, loading } = this.state;
+    const { editorState, title, status, loading, preview } = this.state;
     console.log(videoPlugin.addVideo);
     return (
       <>
         <Loading Loading={loading} />
+        {preview ? (
+          <Preview
+            html={draftToHtml(convertToRaw(editorState.getCurrentContent()))}
+            title={title}
+            previewHandler={this.previewHandler}
+          />
+        ) : null}
         <div className="admin-editor-main-div">
           <div className="admin-editor-inner-div">
             <div className="admin-editor-title-div">
@@ -251,6 +265,17 @@ class AdminEditor extends Component {
             </div>
           </div>
           <div className="admin-editor-button-div">
+            <button
+              onClick={async () => {
+                await this.setState({ preview: true });
+                const modal = document.getElementById("previewResult");
+                modal.style.display = "block";
+              }}
+              className="admin-editor-button"
+            >
+              Preview Content
+            </button>
+            <button className="admin-editor-button">Save as Draft</button>
             <button
               onClick={() => (status ? this.editHtml() : this.submitHtml())}
               className="admin-editor-button"
