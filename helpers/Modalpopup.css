@@ -1,0 +1,77 @@
+.modalpop {
+    display: fixed; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 50;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* modalpop Content */
+  .modalpop-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+  }
+  
+  /* Add Animation */
+  @-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+  }
+  
+  @keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+  }
+  
+  /* The closepop Button */
+  .closepop {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .closepop:hover,
+  .closepop:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .modalpop-header {
+    padding: 2px 16px;
+    background-color: #df9a4b;
+    color: white;
+  }
+  
+  .modalpop-body {padding: 2px 16px;}
+  
+  .modalpop-footer {
+    padding: 10px 16px;
+    background-color: #df9a4b;
+    color: white;
+    text-align: right;
+  }
+
+  .modalpop-button {
+    margin-right: 0.5em;
+    border-radius: 12px;
+    color: #df9a4b;
+    background-color: #222;
+    width: 10%;
+    align-items: flex-end;
+  }

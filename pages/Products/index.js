@@ -4,6 +4,7 @@ import ListItems from "../../layouts/ListItems";
 import Pagination from "../../layouts/Pagination";
 import Loading from "../../layouts/Loading";
 import { withRouter } from "next/router";
+import Modal from "../../layouts/Modal";
 
 class Products extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class Products extends Component {
       id: null,
       active: 1,
       loading: false,
+      modal: false,
     };
     this.getContents = this.getContents.bind(this);
     this.setId = this.setId.bind(this);
@@ -34,7 +36,7 @@ class Products extends Component {
     console.log("======>>>", window.location.href.split("id=")[1]);
   }
   async getContents(from, to) {
-    await this.setState({ loading: true });
+    await this.setState({ modal: true });
     await fetch(`http://45.15.24.190:1010/admin_html_get`, {
       method: "POST",
       headers: {
@@ -63,9 +65,10 @@ class Products extends Component {
     this.getContents(from, to);
   }
   render() {
-    const { html, id, active, loading } = this.state;
+    const { html, id, active, loading, modal } = this.state;
     return (
       <>
+        {/* <Modal Modal={modal} BodyText="this is body" HeaderTitle="this is title" Type="popup" /> */}
         <Loading Loading={loading} />
         {html != "" ? (
           <>
