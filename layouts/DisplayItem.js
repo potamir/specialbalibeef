@@ -65,8 +65,8 @@ class DisplayItem extends Component {
   async getPaymentPage() {
     const { _768 } = this.state;
     const { html, id, title } = this.props;
-    console.log(_768);
-    let newHtml = id ? html[id].HTML : html;
+    console.log("adasdada0", id, html[id]);
+    let newHtml = html[id] ? html[id].HTML : html;
     console.log(newHtml);
     if (_768.matches)
       newHtml = await this.changeImgStyle(id ? html[id].HTML : html);
