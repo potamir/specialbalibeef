@@ -365,6 +365,7 @@ body {
 
 .highlight-content {
   flex: 1;
+  width: 50%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -396,15 +397,20 @@ body {
   text-align: justify;
 }
 .highlight-content-img {
+  transition-duration: 0.6s;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 90%;
   height: 600px;
+  background-color: #dddddd99;
+}
+.highlight-content-img:hover {
+  opacity: 0.9;
 }
 .highlight-img {
-  width: auto;
-  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .homepage-more-div {

@@ -42,6 +42,7 @@ class Admin extends Component {
           await localStorage.setItem("isLogin", responseJson.isLogin);
           await localStorage.setItem("username", responseJson.username);
           await localStorage.setItem("privilege", responseJson.privilege);
+          await localStorage.setItem("id", responseJson.id);
           Router.push("/Admin");
         } else {
           await this.setState({ openModal: true });

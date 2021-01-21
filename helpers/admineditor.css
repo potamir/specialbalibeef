@@ -24,17 +24,19 @@
   border-color: #ddd;
 }
 .admin-editor-button-div {
-  padding: 1rem 0rem 0rem 0rem;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  background-color: #222;
 }
 .admin-editor-button {
   padding: 1rem;
   width: 100%;
+  margin: 10px;
   transition-duration: 0.4s;
   border-style: solid;
   background-color: transparent;
   border-color: #eba95e;
+  color: #eba95e;
   font-weight: bold;
   font-size: 1.1rem;
 }

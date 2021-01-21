@@ -32,6 +32,8 @@ class AdminEditor extends Component {
     this.editHtml = this.editHtml.bind(this);
     this.titleHandler = this.titleHandler.bind(this);
     this.previewHandler = this.previewHandler.bind(this);
+    this.saveAsDraft = this.saveAsDraft.bind(this);
+    this.loadDraft = this.loadDraft.bind(this);
     // this.getPaymentPage = this.getPaymentPage.bind(this);
   }
 
@@ -205,6 +207,94 @@ class AdminEditor extends Component {
       });
   }
 
+  async saveAsDraft() {
+    this.setState({ loading: true });
+    const { editorState, title } = this.state;
+    const url = window.location.href.split("?");
+    const param = url ? url[1] : null;
+    const paramSplitted = param ? param.split("&") : null;
+    const admin_id = await localStorage.getItem("id");
+    let table_name = "ADD_CONTENT";
+    if (paramSplitted) {
+      const id = paramSplitted[1].split("id=")[1];
+      const index = paramSplitted[0].split("index=")[1];
+      const page = paramSplitted[3].split("page=")[1];
+      table_name = CONSTANT.TABLE_LIST[page];
+    }
+    console.log("===============================>", table_name);
+    await fetch(`http://45.15.24.190:1010/admin_save_draft`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        html: draftToHtml(convertToRaw(editorState.getCurrentContent())),
+        table: table_name,
+        id: admin_id,
+        title: title,
+      }),
+    })
+      .then((response) => response.json())
+      .then(async (responseJson) => {
+        if (responseJson.status === "success") {
+          alert("success");
+          this.setState({ loading: false });
+        } else {
+          alert("fail");
+          this.setState({ loading: false });
+          console.log(status);
+        }
+      });
+  }
+
+  async loadDraft() {
+    this.setState({ loading: true });
+    const url = window.location.href.split("?");
+    const param = url ? url[1] : null;
+    const paramSplitted = param ? param.split("&") : null;
+    const admin_id = await localStorage.getItem("id");
+    let table_name = "ADD_CONTENT";
+    if (paramSplitted) {
+      const id = paramSplitted[1].split("id=")[1];
+      const index = paramSplitted[0].split("index=")[1];
+      const page = paramSplitted[3].split("page=")[1];
+      table_name = CONSTANT.TABLE_LIST[page];
+    }
+    console.log("===============================>", table_name);
+    await fetch(`http://45.15.24.190:1010/admin_get_draft`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: admin_id,
+        table: table_name,
+      }),
+    })
+      .then((response) => response.json())
+      .then(async (responseJson) => {
+        if (responseJson[0]) {
+          import(`html-to-draftjs`).then(async (module) => {
+            const htmlToDraft = module.default;
+            const blocksFromHtml = htmlToDraft(responseJson[0].HTML);
+            const { contentBlocks, entityMap } = blocksFromHtml;
+            const contentState = ContentState.createFromBlockArray(
+              contentBlocks,
+              entityMap
+            );
+            const editorState = EditorState.createWithContent(contentState);
+            this.onEditorStateChange(editorState);
+          });
+          this.setState({ title: responseJson[0].TITLE, loading: false });
+        } else {
+          alert("no draft yet");
+          this.setState({ loading: false });
+        }
+      });
+  }
+
   titleHandler(e) {
     this.setState({ title: e.target.value });
   }
@@ -265,6 +355,12 @@ class AdminEditor extends Component {
             </div>
           </div>
           <div className="admin-editor-button-div">
+            <button className="admin-editor-button" onClick={this.saveAsDraft}>
+              Save as Draft
+            </button>
+            <button className="admin-editor-button" onClick={this.loadDraft}>
+              Load Draft
+            </button>
             <button
               onClick={async () => {
                 await this.setState({ preview: true });
@@ -275,7 +371,6 @@ class AdminEditor extends Component {
             >
               Preview Content
             </button>
-            <button className="admin-editor-button">Save as Draft</button>
             <button
               onClick={() => (status ? this.editHtml() : this.submitHtml())}
               className="admin-editor-button"
