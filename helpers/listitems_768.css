@@ -1,0 +1,12 @@
+@media (max-width: 768px) {
+  .list-item-inner-div {
+    width: 90vw;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50vw, 1fr));
+    justify-items: center;
+  }
+  .list-item-wrapper {
+    width: 90vw;
+    height: 400px;
+  }
+}

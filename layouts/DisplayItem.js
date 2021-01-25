@@ -51,6 +51,7 @@ class DisplayItem extends Component {
 
   changeImgStyle(html) {
     const temp = document.createElement("div");
+    console.log(html, "<<===============================");
     temp.innerHTML = html;
     const htmlObject = temp;
     const totalImgTags = htmlObject.getElementsByTagName("IMG").length;
@@ -65,11 +66,10 @@ class DisplayItem extends Component {
   async getPaymentPage() {
     const { _768 } = this.state;
     const { html, id, title } = this.props;
-    console.log("adasdada0", id, html[id]);
+    console.log("9999999999999999999999999aaaaa", id);
     let newHtml = html[id] ? html[id].HTML : html;
-    console.log(newHtml);
     if (_768.matches)
-      newHtml = await this.changeImgStyle(id ? html[id].HTML : html);
+      newHtml = await this.changeImgStyle(id || id == 0 ? html[id].HTML : html);
     import(`html-to-draftjs`).then(async (module) => {
       const htmlToDraft = module.default;
       const blocksFromHtml = htmlToDraft(newHtml);
@@ -87,7 +87,6 @@ class DisplayItem extends Component {
   }
 
   render() {
-    console.log("====>>>>", this.props);
     const { _768, html, title } = this.state;
     const { id } = this.props;
     const StyledWrapper = _768.matches

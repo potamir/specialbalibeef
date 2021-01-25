@@ -7,13 +7,16 @@
   .header-menu:hover {
     background-color: #ddd;
   }
+  .menubar-wrapper {
+    display: none;
+  }
   .header-wrapper {
     flex-direction: column;
     height: 4rem;
     padding: 0rem 0rem 0rem 0rem;
     align-items: flex-start;
     width: 100vw;
-    background-color: #BB8141;
+    background-color: #222;
   }
   .header-logo-wrapper {
     justify-content: flex-start;
@@ -25,6 +28,54 @@
     text-align: center;
     justify-content: center;
   }
+  .homepage-more-div,
+  .homepage-welcome-div {
+    padding: 0px;
+    font-size: 1.2rem;
+    width: 100%;
+    height: 50vh;
+  }
+  .homepage-more-div {
+    flex-direction: column;
+  }
+  .homepage-more-font {
+    font-size: 1.5rem;
+  }
+
+  .highlight-main-div {
+    height: 100%;
+  }
+  .highlight-inner-div {
+    flex-direction: column;
+  }
+  .highlight-content {
+    width: 90%;
+    margin: 5px 0px 5px 0px;
+  }
+  .highlight-content-title {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+  .highlight-content-details {
+    font-size: 1rem;
+  }
+  .highlight-content-img {
+    height: 300px;
+  }
+
+  .footer {
+    padding: 1rem;
+  }
+  .footer-img {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .footer-logo {
+    height: 1.5rem;
+    width: auto;
+    padding: 0rem 1rem 0rem 1rem;
+  }
+
   .home-content-div {
     padding: 0rem 1rem 1rem 1rem;
   }
@@ -50,14 +101,6 @@
     color: #ddd;
     text-align: right;
     font-size: 0.9rem;
-  }
-  .footer-img {
-    justify-content: space-between;
-  }
-  .footer-logo {
-    height: 1.5rem;
-    width: auto;
-    padding: 0rem 0rem 0rem 0rem;
   }
   .home-sponsored-div {
     font-size: 0.7rem;
@@ -85,7 +128,15 @@
   .contact-content {
     padding: 0rem 1rem 0rem 1rem;
   }
+  .contact-main-div {
+    align-items: center;
+    justify-content: center;
+  }
   .contact-form-wrapper {
     padding: 0 1rem 0 1rem;
+  }
+  .contact-form-div {
+    flex: 1;
+    width: 90%;
   }
 }

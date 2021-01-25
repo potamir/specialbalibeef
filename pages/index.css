@@ -153,10 +153,9 @@ body {
 }
 
 .mobile-nav {
-  margin-top: 2em;
   color: #ddd;
-  min-height: 3rem;
-  width: 25rem;
+  min-height: 6vh;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -178,6 +177,11 @@ body {
   display: flex;
   align-items: center;
   padding-left: 2rem;
+}
+.active-mobile-nav {
+  color: #111;
+  padding: 0px 5px 0px 5px;
+  background-color: #ffcd94;
 }
 .content-page {
   min-height: 90vh;

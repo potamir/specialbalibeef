@@ -32,7 +32,6 @@ class ListItems extends Component {
       highlightItem_data,
       page,
     } = this.props;
-    console.log(CONSTANT.TABLE_LIST[page]);
     return (
       <div className="list-item-main-div">
         <div className="list-item-inner-div">
