@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Router from "next/router";
-import Loading from "../../layouts/loading";
+import Loading from "../../layouts/Loading";
 
 class About_Us extends Component {
   constructor(props) {
