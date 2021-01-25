@@ -209,17 +209,17 @@ class AdminEditor extends Component {
 
   async saveAsDraft() {
     this.setState({ loading: true });
-    const { editorState, title } = this.state;
+    const { editorState, title, id } = this.state;
     const url = window.location.href.split("?");
     const param = url ? url[1] : null;
     const paramSplitted = param ? param.split("&") : null;
     const admin_id = await localStorage.getItem("id");
     let table_name = "ADD_CONTENT";
+    let item_id = 0;
     if (paramSplitted) {
-      const id = paramSplitted[1].split("id=")[1];
-      const index = paramSplitted[0].split("index=")[1];
       const page = paramSplitted[3].split("page=")[1];
       table_name = CONSTANT.TABLE_LIST[page];
+      item_id = id;
     }
     console.log("===============================>", table_name);
     await fetch(`http://45.15.24.190:1010/admin_save_draft`, {
@@ -231,6 +231,7 @@ class AdminEditor extends Component {
       body: JSON.stringify({
         html: draftToHtml(convertToRaw(editorState.getCurrentContent())),
         table: table_name,
+        item_id: item_id,
         id: admin_id,
         title: title,
       }),
@@ -250,18 +251,24 @@ class AdminEditor extends Component {
 
   async loadDraft() {
     this.setState({ loading: true });
+    const { id } = this.state;
     const url = window.location.href.split("?");
     const param = url ? url[1] : null;
     const paramSplitted = param ? param.split("&") : null;
     const admin_id = await localStorage.getItem("id");
     let table_name = "ADD_CONTENT";
+    let item_id = 0;
     if (paramSplitted) {
-      const id = paramSplitted[1].split("id=")[1];
-      const index = paramSplitted[0].split("index=")[1];
       const page = paramSplitted[3].split("page=")[1];
       table_name = CONSTANT.TABLE_LIST[page];
+      item_id = id;
     }
-    console.log("===============================>", table_name);
+    console.log(
+      "===============================>",
+      item_id,
+      admin_id,
+      table_name
+    );
     await fetch(`http://45.15.24.190:1010/admin_get_draft`, {
       method: "POST",
       headers: {
@@ -269,6 +276,7 @@ class AdminEditor extends Component {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        item_id: item_id,
         id: admin_id,
         table: table_name,
       }),

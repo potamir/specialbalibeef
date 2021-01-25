@@ -3,6 +3,7 @@ import ListItems from "../../../layouts/ListItems";
 import Select from "react-select";
 import * as CONSTANT from "../../../helpers/constant";
 import Loading from "../../../layouts/Loading";
+import Router from "next/router";
 
 const options = [
   { value: "RND", label: "Reserch & Development" },
@@ -10,6 +11,7 @@ const options = [
   { value: "HISTORY", label: "History" },
   { value: "TNS", label: "Training & Mentoring" },
   { value: "IS", label: "Information System" },
+  { value: "ABOUT_US", label: "About Us" },
 ];
 
 class AdminContents extends Component {
@@ -129,7 +131,9 @@ class AdminContents extends Component {
   }
 
   handleChange = (selectedOption) => {
-    this.setState({ selectedOption }, () => this.getContents());
+    if (selectedOption.value == "ABOUT_US") {
+      Router.push("http://localhost:3000/Admin/Contents/About_Us");
+    } else this.setState({ selectedOption }, () => this.getContents());
   };
 
   render() {

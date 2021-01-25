@@ -15,6 +15,7 @@ import "../helpers/admineditor.css";
 import "../helpers/pagination.css";
 import "../helpers/loading.css";
 import "../helpers/Modalpopup.css";
+import "../helpers/aboutuseditor.css";
 import { HotKeys } from "react-hotkeys";
 import Router from "next/router";
 import Link from "next/link";

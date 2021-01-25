@@ -17,7 +17,7 @@ body {
   justify-content: space-between;
   padding: 0rem 2rem 0rem 2rem;
   border-style: solid;
-  border-width: 0px 0px 2px 0px;
+  border-width: 0px 0px 0px 0px;
   border-color: #ddd;
 }
 
@@ -29,7 +29,7 @@ body {
   align-items: flex-end;
   border-style: solid;
   border-width: 0px 0px 2px 0px;
-  border-color: #555;
+  border-color: #222;
 }
 
 .header-logo-wrapper {
@@ -81,10 +81,12 @@ body {
   color: #111;
   opacity: 0.9;
   cursor: pointer;
+  padding: 0px 5px 0px 5px;
   background-color: #ffcd9477;
 }
 .active-nav {
   color: #111;
+  padding: 0px 5px 0px 5px;
   background-color: #ffcd94;
 }
 
@@ -271,7 +273,7 @@ body {
 }
 .contact-content-title {
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   padding-bottom: 1rem;
 }
 .contact-content {
